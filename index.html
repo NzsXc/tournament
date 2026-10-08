@@ -10,6 +10,8 @@
 .match-toolbar{flex-wrap:wrap;justify-content:flex-start}.match-toolbar>.segmented{margin-right:auto}.league-heading{margin:24px 0 12px;color:var(--blue)}.group-ranking{margin-bottom:24px}.group-ranking h3{font-size:13px;color:var(--blue)}.rules-text.rich{white-space:normal}.rules-text h2{font-size:19px;margin:0 0 20px;color:var(--text)}.rules-text h3{font-size:14px;margin:25px 0 8px;color:var(--text)}.rules-text p{margin:8px 0}.rules-text ul{margin:8px 0;padding-left:24px}.league-assignment-row{display:grid;grid-template-columns:1fr 115px;gap:14px;align-items:center;padding:7px 0}.league-assignment-row select{margin:0}.entrant-row{display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;margin-bottom:12px}.entrant-row select{margin:0}.entrant-row span{color:var(--muted);font-size:11px}.qualification-table{margin-bottom:22px}@media(max-width:760px){.match-toolbar .round-label{margin-bottom:0}.match-toolbar>.segmented{width:100%;margin-right:0;justify-content:space-around}.match-toolbar .round-label select{max-width:175px}.league-assignment-row{grid-template-columns:1fr 95px}.rules-text h2{font-size:17px}}
 
 .rules-view #main>:not(#rules){display:none}.rules-view #rules{min-height:65vh;padding-top:36px}.rules-view #rules .section-heading h2{display:none}#rules-back{margin-bottom:20px}.rules-view #rules .rules-text{margin-top:12px}
+
+.registration-status{margin:12px 0 0}.registration-rules{text-decoration:underline;text-underline-offset:3px}#registration-message{color:#a5c5b0;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -24,7 +26,8 @@
 <section class="hero" id="overview">
 <div class="hero-copy"><div class="eyebrow"><span class="dot"></span><span id="edition">TOURNAMENT</span><span class="tag" id="phase">準備中</span></div>
 <h1 id="title">心理バトル 大会</h1><p class="hero-tagline">読み合いの、その先へ。</p><p id="description" class="description"></p>
-<div class="hero-actions"><a class="btn primary" href="#matches">対戦表を見る <span aria-hidden="true">↗</span></a><a class="btn ghost" href="?view=rules">大会ルール <span aria-hidden="true">→</span></a><a class="btn ghost" id="game-link" hidden target="_blank" rel="noopener noreferrer">ゲームを開く ↗</a></div>
+<div class="hero-actions"><button class="btn primary" id="registration-open" type="button" disabled>参加登録</button><a class="btn ghost" href="#matches">対戦表を見る <span aria-hidden="true">↗</span></a><a class="btn ghost" href="?view=rules">大会ルール <span aria-hidden="true">→</span></a><a class="btn ghost" id="game-link" hidden target="_blank" rel="noopener noreferrer">ゲームを開く ↗</a></div>
+<p class="subtle registration-status" id="registration-status" role="status">参加受付：2026年10月11日 18:00まで（日本時間）</p>
 <div class="hero-details"><div><small>開催日時</small><strong id="event-date">未定</strong></div><div><small>開催場所</small><strong id="venue">オンライン</strong></div><div><small>大会形式</small><strong id="format">未設定</strong></div></div>
 </div>
 <div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="red-tile"><span>READ</span></div><div class="blue-tile"><span>REACT</span></div><div class="bolt"></div><div class="art-caption">EVERY CHOICE COUNTS.</div><div class="art-corner">MB / VS</div></div>
@@ -39,12 +42,13 @@
 <section class="section" id="history"><div class="section-heading"><div><span class="kicker">ARCHIVE</span><h2>過去の大会</h2></div></div><div id="history-list"></div></section>
 </main>
 <footer><div class="wrap footer-inner"><div class="brand footer-brand">MIND BATTLE<small>一手の選択が、勝負を変える。</small></div><div><a href="#overview">ページの先頭へ ↑</a><small>心理バトル 大会情報サイト</small></div></div></footer>
+<dialog id="registration-dialog"><div class="dialog-heading"><h2>大会に参加登録</h2><button class="icon-button" data-close="registration-dialog" aria-label="閉じる">×</button></div><p class="subtle">受付期限：2026年10月11日 18:00（日本時間）<br>登録した名前は参加者リストに公開されます。</p><form id="registration-form"><label>参加者名<input name="name" type="text" maxlength="40" required autocomplete="nickname" placeholder="大会で使用する名前"></label><p class="subtle">参加前に<a class="registration-rules" href="?view=rules" target="_blank" rel="noopener noreferrer">大会ルール</a>をご確認ください。</p><p id="registration-error" class="error" role="alert"></p><p id="registration-message" role="status"></p><button class="btn primary full" id="registration-submit" type="submit" disabled>参加登録する</button></form></dialog>
 <dialog id="login-dialog"><div class="dialog-heading"><h2>管理者ログイン</h2><button class="icon-button" data-close="login-dialog" aria-label="閉じる">×</button></div><p class="subtle" id="login-description">大会の管理者アカウントでログインしてください。</p><form id="login-form"><label>メールアドレス<input name="email" type="email" required autocomplete="username"></label><label>パスワード<input name="password" type="password" required autocomplete="current-password"></label><p id="login-error" class="error" role="alert"></p><button class="btn primary full" type="submit" id="login-submit">ログイン</button></form><button class="btn primary full" id="demo-enter" hidden>管理者デモを開く →</button></dialog>
 <dialog id="admin-dialog" class="admin-dialog"><div class="dialog-heading"><div><span class="kicker">CONTROL ROOM</span><h2>大会管理</h2></div><button class="icon-button" data-close="admin-dialog" aria-label="閉じる">×</button></div><div class="admin-status"><span id="admin-identity"></span><button class="btn small ghost" id="logout">ログアウト</button></div><p id="admin-mode-note" class="subtle"></p>
 <div class="admin-tabs" role="group" aria-label="管理メニュー"><button class="active" data-admin-tab="results">結果登録</button><button data-admin-tab="info">大会情報</button><button data-admin-tab="roster">参加者・対戦表</button><button data-admin-tab="playoff">リーグ・決勝</button><button data-admin-tab="archive">大会保存</button></div>
 <div id="admin-results" class="admin-panel"><div class="admin-hint">勝利ボタンで1勝を登録。2本先取は2勝で決着します。引き分けは再試合として扱います。</div><label class="round-label">ステージ<select id="admin-stage"><option value="league">リーグ戦</option><option value="playoff">決勝トーナメント</option></select></label><label class="round-label">ラウンド<select id="admin-round"><option value="all">すべて</option></select></label><div id="result-list"></div></div>
 <div id="admin-info" class="admin-panel" hidden><form id="info-form"><div class="form-grid"><label>大会名<input name="title" maxlength="80" required></label><label>大会表示コード<input name="edition" maxlength="40" required></label><label>開催日（日本時間）<input name="date" type="date"></label><label>開始時刻（任意・日本時間）<input name="time" type="time"></label><label>開催場所<input name="venue" maxlength="80" required></label><label>大会の状態<select name="phase"><option value="scheduled">開催予定</option><option value="open">参加受付中</option><option value="live">開催中</option><option value="finished">終了</option></select></label><label>優勝賞品・賞金<input name="prize" maxlength="80" required></label></div><label>紹介文<textarea name="description" rows="3" maxlength="1000"></textarea></label><label>お知らせ<textarea name="notice" rows="2" maxlength="1000"></textarea></label><label>ゲームURL（任意）<input name="gameUrl" type="url" placeholder="https://…" maxlength="500"></label><label>大会ルール（見出し・段落・箇条書きのHTMLを使用可）<textarea name="rules" rows="6" maxlength="10000"></textarea></label><button class="btn primary" type="submit">大会情報を保存 ↗</button></form></div>
-<div id="admin-roster" class="admin-panel" hidden><form id="roster-form"><label>参加者名（1行に1人・2〜32人）<textarea name="names" rows="10" required></textarea></label><div class="form-grid"><label>大会形式<select name="format"><option value="league-knockout">リーグ総当たり → 決勝トーナメント</option><option value="round-robin">総当たり</option><option value="knockout">トーナメント</option></select></label><label>リーグ数（複数リーグ形式のみ）<input name="leagueCount" type="number" min="1" max="8" value="2"></label><label>試合方式<select name="bestOf"><option value="1">1本勝負</option><option value="3">2本先取</option></select></label></div><p class="subtle">複数リーグでは入力順にA・B…へ均等に振り分けます。各リーグには2人以上必要です。所属は「リーグ・決勝」から変更できます。作り直すと現在の試合結果は消えます。必要なら先に大会保存・バックアップを行ってください。</p><button class="btn primary" type="submit">参加者を保存・対戦表を作成 ↗</button></form></div>
+<div id="admin-roster" class="admin-panel" hidden><form id="roster-form"><label>参加者名（1行に1人・2〜32人）<textarea name="names" rows="10" required></textarea></label><p class="subtle" id="registration-import-note"></p><button class="btn small ghost" id="registration-import" type="button">新しい参加登録者を名簿に追加</button><div class="form-grid"><label>大会形式<select name="format"><option value="league-knockout">リーグ総当たり → 決勝トーナメント</option><option value="round-robin">総当たり</option><option value="knockout">トーナメント</option></select></label><label>リーグ数（複数リーグ形式のみ）<input name="leagueCount" type="number" min="1" max="8" value="2"></label><label>試合方式<select name="bestOf"><option value="1">1本勝負</option><option value="3">2本先取</option></select></label></div><p class="subtle">複数リーグでは入力順にA・B…へ均等に振り分けます。各リーグには2人以上必要です。所属は「リーグ・決勝」から変更できます。作り直すと現在の試合結果は消えます。必要なら先に大会保存・バックアップを行ってください。</p><button class="btn primary" type="submit">参加者を保存・対戦表を作成 ↗</button></form></div>
 <div id="admin-playoff" class="admin-panel" hidden>
 <div id="playoff-unavailable" class="empty">「参加者・対戦表」でリーグ総当たり → 決勝トーナメントを選択してください。</div>
 <div id="playoff-settings">
@@ -230,9 +234,47 @@
   else root.TournamentCore=api;
 })(typeof window!=='undefined'?window:globalThis);
 </script>
+<script>(function (root) {
+  'use strict';
+  const EVENT='2026-10-11';
+  const DEADLINE=Date.parse('2026-10-11T18:00:00+09:00');
+  const PATH='mindBattleRegistrations/'+EVENT;
+  const KEY='mind-battle-registrations-'+EVENT;
+  function name(value){
+    const result=String(value??'').normalize('NFC').trim();
+    if(!result||result.length>40||/[\u0000-\u001f\u007f]/.test(result))throw Error('参加者名は改行なしの1〜40文字で入力してください。');
+    return result;
+  }
+  function key(value){
+    return 'n_'+String(value??'').normalize('NFC').trim().toLowerCase().replace(/%/g,'%25').replace(/\./g,'%2E').replace(/#/g,'%23').replace(/\$/g,'%24').replace(/\[/g,'%5B').replace(/\]/g,'%5D').replace(/\//g,'%2F');
+  }
+  function normalize(value){
+    const entries={};
+    if(!value||typeof value!=='object')return entries;
+    for(const [id,entry]of Object.entries(value)){
+      try{if(entry&&name(entry.name)===entry.name&&key(entry.name)===id&&Number.isFinite(entry.createdAt))entries[id]={name:entry.name,createdAt:entry.createdAt};}catch{}
+    }
+    return entries;
+  }
+  function participants(current,entries){
+    const players=Object.values(current.players||{}).sort((a,b)=>a.seed-b.seed),seen=new Set(players.map(p=>key(p.name)));
+    if(current.info.date.slice(0,10)!==EVENT)return players;
+    const result=players.slice();let seed=Math.max(0,...players.map(p=>p.seed));
+    for(const [id,entry]of Object.entries(normalize(entries)).sort((a,b)=>a[1].createdAt-b[1].createdAt||a[0].localeCompare(b[0]))){
+      if(seen.has(id))continue;
+      seen.add(id);result.push({id:'registration-'+id,name:entry.name,seed:++seed,registered:true});
+    }
+    return result;
+  }
+  function isOpen(now){return Number.isFinite(now)&&now<DEADLINE;}
+  const api={EVENT,DEADLINE,PATH,KEY,name,key,normalize,participants,isOpen};
+  if(typeof module==='object'&&module.exports)module.exports=api;
+  else root.TournamentRegistration=api;
+})(typeof window==='object'?window:globalThis);
+</script>
 <script>(function () {
   'use strict';
-  const C=window.TournamentCore, $=id=>document.getElementById(id);
+  const C=window.TournamentCore, R=window.TournamentRegistration, $=id=>document.getElementById(id);
   const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const config=window.MIND_BATTLE_CONFIG||{firebase:null,adminUids:[]};
   const demoMode=!config.firebase;
@@ -240,6 +282,7 @@
   const CONTENT_KEY='mind-battle-tournament-demo-oct11-update';
   let state=C.empty(), admin=false, busy=false, ready=false, connected=false, filter='all';
   let sdk=null, auth=null, db=null, dataRef=null, formRevision=0, rosterRevision=0, toastTimer=null;
+  let registrations={}, registrationReady=false, registrationFailed=false, registering=false, serverOffset=0, clockReady=demoMode;
   const RULES_VIEW=new URLSearchParams(window.location?.search||'').get('view')==='rules';
   document.body.classList.toggle('rules-view',RULES_VIEW);$('rules-back').hidden=!RULES_VIEW;
   if(RULES_VIEW)for(const a of document.querySelectorAll('a[href^="#"]'))if(!a.classList.contains('skip'))a.setAttribute('href','?view=home'+a.getAttribute('href'));
@@ -255,6 +298,19 @@
     return label+(clock?' '+clock+' JST':' ・開始時刻未定');
   }
   function rulesHtml(value){return esc(value).replace(/&lt;(\/?)(h2|h3|p|ul|li)\s*&gt;/gi,(_,close,tag)=>'<'+close+tag.toLowerCase()+'>');}
+  function publicPlayers(){return R.participants(state.current,registrations);}
+  function registrationTime(){return Date.now()+serverOffset;}
+  function renderRegistration(){
+    const currentEvent=state.current.info.date.slice(0,10)===R.EVENT,closed=clockReady&&!R.isOpen(registrationTime());
+    const enabled=currentEvent&&ready&&registrationReady&&clockReady&&(demoMode||connected)&&!closed&&!registering;
+    $('registration-open').disabled=!enabled;$('registration-submit').disabled=!enabled;
+    text('registration-open',closed||!currentEvent?'参加受付終了':'参加登録');
+    text('registration-status',!currentEvent?'この大会の参加受付は終了しました。':closed?'参加受付は終了しました（10月11日 18:00・日本時間）。':registrationFailed?'参加受付を読み込めません。時間をおいて再読み込みしてください。':!registrationReady||!clockReady?'参加受付を確認しています…':!demoMode&&!connected?'参加登録は接続の復旧後に行えます。':`参加受付：2026年10月11日 18:00まで（日本時間）${demoMode?'・デモ登録はこのブラウザ内のみ':''}`);
+    const names=$('roster-form').elements.names.value.split('\n').map(s=>s.trim()).filter(Boolean),known=new Set(names.map(s=>{try{return R.key(s);}catch{return s;}}));
+    const pending=publicPlayers().filter(p=>p.registered&&!known.has(R.key(p.name)));
+    text('registration-import-note',`新しい参加登録者：${pending.length}人。名簿に追加後、「参加者を保存・対戦表を作成」で対戦表へ反映します。`);
+    $('registration-import').disabled=busy||pending.length===0;
+  }
   function showRules(element,value){element.innerHTML=rulesHtml(value);element.classList.toggle('rich',/<\/?(?:h2|h3|p|ul|li)\s*>/i.test(value));}
   function activeView(current,stage){
     if(current.info.format==='league-knockout' && stage==='playoff')return C.playoffView(current);
@@ -287,7 +343,7 @@
   function champion(current){if(current.info.format==='league-knockout')return current.playoff?champion(C.playoffView(current)):'';const {done,total}=totals(current);if(!total||done!==total)return '';if(current.info.format==='knockout'){const m=C.list(current.matches).sort((a,b)=>b.round-a.round)[0];return current.players[m.winner]?.name||'';}const rows=C.standings(current).filter(r=>r.rank===1);return rows.map(r=>r.name).join(' / ');}
   function render(){const c=state.current,i=c.info,{done,total}=totals(c),percent=total?Math.round(done/total*100):0;
     text('title',i.title);text('edition',i.edition);text('phase',phaseNames[i.phase]||'開催予定');text('description',i.description);text('notice',i.notice||'新しいお知らせはありません。');text('event-date',dateLabel(i.date,i.time));text('venue',i.venue);text('format',i.format==='league-knockout'?`${i.leagueCount||2}リーグ総当たり → 決勝`:formatName(i));text('prize',i.prize);text('match-format',formatName(i));showRules($('rules-text'),i.rules);document.title=(RULES_VIEW?'大会ルール | ':'')+i.title+' | 心理バトル';
-    $('player-count').innerHTML=C.list(c.players).length+'<small>人</small>';$('completed-count').innerHTML=done+`<small>/ ${total}</small>`;$('progress-label').innerHTML=percent+'<small>%</small>';$('progress-fill').style.width=percent+'%';
+    $('player-count').innerHTML=publicPlayers().length+'<small>人</small>';$('completed-count').innerHTML=done+`<small>/ ${total}</small>`;$('progress-label').innerHTML=percent+'<small>%</small>';$('progress-fill').style.width=percent+'%';
     const url=safeUrl(i.gameUrl);$('game-link').hidden=!url;if(url)$('game-link').href=url;
     updateStage($('match-stage'),c);updateStage($('admin-stage'),c);updateLeagueFilter(c);
     let view=activeView(c,$('match-stage').value);
@@ -297,19 +353,19 @@
     text('stage-note',c.info.format==='league-knockout'?(!c.playoff&&$('match-stage').value==='playoff'?'決勝トーナメントは未作成です。全リーグ戦終了後に管理者が作成します。':c.playoff?'決勝トーナメント：'+C.list(c.playoff.entrants).length+'人・'+(c.playoff.bestOf===3?'2本先取':'1本勝負'):C.leagueComplete(c)?'リーグ戦終了。管理者が決勝進出者を確定してから決勝トーナメントを作成します。':'各リーグ内で総当たりを行い、全試合終了後に決勝トーナメントへ進みます。'):'');
     $('group-standings').hidden=i.format!=='league-knockout';$('ranking-table').hidden=i.format==='league-knockout';
     $('group-standings').innerHTML=i.format==='league-knockout'?groupRankingHtml(c):'';
-    $('ranking-body').innerHTML=rankingHtml(c);text('roster-count',C.list(c.players).length+' PLAYERS');
+    $('ranking-body').innerHTML=rankingHtml(c);text('roster-count',publicPlayers().length+' PLAYERS');
     text('standings-tag',i.phase==='finished'?'最終':'暫定');
     text('ranking-note',i.format==='league-knockout'?'リーグごとの順位。試合勝数 → ゲーム得失点の順。同値は同順位。決勝進出者は管理者が確定します。':i.format==='knockout'?'トーナメントの勝敗成績です。順位は対戦表の進行結果で決まります。': '試合勝数 → 得失点（ゲーム勝数 − 敗数）の順。同値は同順位。');
-    $('player-list').innerHTML=C.list(c.players).sort((a,b)=>a.seed-b.seed).map(p=>`<div class="player-pill">${avatar(p)}<span class="player-name">${esc(p.name)}</span><span class="seed">${i.format==='league-knockout'?'リーグ '+esc(p.league)+' · ':''}#${String(p.seed).padStart(2,'0')}</span></div>`).join('')||'<div class="empty">参加者未登録</div>';
+    $('player-list').innerHTML=publicPlayers().map(p=>`<div class="player-pill">${avatar(p)}<span class="player-name">${esc(p.name)}</span><span class="seed">${p.registered?'参加登録済':`${i.format==='league-knockout'?'リーグ '+esc(p.league)+' · ':''}#${String(p.seed).padStart(2,'0')}`}</span></div>`).join('')||'<div class="empty">参加者未登録</div>';
     const archives=Object.entries(state.archives).sort((a,b)=>b[1].savedAt-a[1].savedAt);
     $('history-list').innerHTML=archives.map(([id,a])=>`<button class="archive-card" data-archive="${esc(id)}"><span><small>${esc(dateLabel(a.info.date,a.info.time))} · ${esc(formatName(a.info))}</small><strong>${esc(a.info.title)}</strong><small>${champion(a)?(a.info.format!=='round-robin'?'優勝：':'成績1位：')+esc(champion(a)):'大会概要と試合結果を見る'}</small></span><span class="arrow" aria-hidden="true">↗</span></button>`).join('')||'<div class="empty">過去大会はまだ登録されていません。</div>';
-    if(admin){renderResults();refreshLeagueStats();}
+    if(admin){renderResults();refreshLeagueStats();}renderRegistration();
   }
   function renderResults(){const c=activeView(state.current,$('admin-stage').value);roundOptions($('admin-round'),c);const round=$('admin-round').value;const matches=C.list(c.matches).sort((a,b)=>a.round-b.round||a.slot-b.slot).filter(m=>round==='all'||m.round===Number(round));
     $('result-list').innerHTML=matches.map(m=>{const name=id=>c.players[id]?.name||'勝者待ち';const playable=m.a&&m.b&&m.status==='pending';return `<div class="admin-match"><div class="subtle">${m.league?'リーグ '+esc(m.league)+' / ':''}${esc(roundName(c,m.round))} / ${esc(m.id)} · ${m.status==='done'?'試合終了':m.status==='bye'?'不戦勝':'未終了'}</div><div class="admin-match-heading"><span>${esc(name(m.a))} <span class="subtle">vs</span> ${esc(m.status==='bye'?'シード':name(m.b))}</span><span class="score">${m.scoreA} : ${m.scoreB}</span></div><div class="result-actions">${playable?`<button class="btn small a" data-result="a" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>${esc(name(m.a))} の勝利</button><button class="btn small b" data-result="b" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>${esc(name(m.b))} の勝利</button><button class="btn small ghost" data-result="replay" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>引き分け・再試合</button>`:''}${m.status!=='bye'&&(m.scoreA||m.scoreB||m.note)?`<button class="btn small ghost" data-result="reset" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>結果リセット</button>`:''}</div>${m.note?`<div class="subtle">${esc(m.note)}</div>`:''}</div>`;}).join('')||`<div class="empty">${state.current.info.format==='league-knockout'&&$('admin-stage').value==='playoff'?'決勝は「リーグ・決勝」で全リーグ戦終了後に作成してください。':'「参加者・対戦表」から対戦表を作成してください。'}</div>`;
   }
   function populateForms(){const i=state.current.info,form=$('info-form');for(const el of form.elements)if(el.name)el.value=el.name==='date'?i.date.slice(0,10):el.name==='time'?(i.time||i.date.split('T')[1]||''):i[el.name]??'';
-    const r=$('roster-form');r.elements.names.value=C.list(state.current.players).sort((a,b)=>a.seed-b.seed).map(p=>p.name).join('\n');r.elements.format.value=i.format;r.elements.bestOf.value=i.bestOf;r.elements.leagueCount.value=i.leagueCount||2;rebuildLeagueControls();formRevision=state.revision;rosterRevision=state.revision;
+    const r=$('roster-form');r.elements.names.value=publicPlayers().map(p=>p.name).join('\n');r.elements.format.value=i.format;r.elements.bestOf.value=i.bestOf;r.elements.leagueCount.value=i.leagueCount||2;rebuildLeagueControls();formRevision=state.revision;rosterRevision=state.revision;renderRegistration();
   }
   function refreshLeagueStats(){
     const c=state.current,combined=c.info.format==='league-knockout';
@@ -343,8 +399,37 @@
       if(demoMode){let latest;try{const raw=localStorage.getItem(KEY);latest=raw?C.normalize(JSON.parse(raw)):state;}catch{throw Error('ブラウザ内のデータを読み込めません。');}if(latest.revision!==expected)throw Error('別の操作でデータが更新されました。管理画面を閉じて開き直してください。');const next=C.copy(latest);mutate(next);next.revision++;localStorage.setItem(KEY,JSON.stringify(next));state=next;
       }else{const result=await sdk.runTransaction(dataRef,data=>{const latest=C.normalize(data);if(latest.revision!==expected)return;mutate(latest);latest.revision++;return latest;},{applyLocally:false});if(!result.committed)throw Error('別の管理操作でデータが更新されました。管理画面を閉じて開き直してください。');state=C.normalize(result.snapshot.val());}
       render();formRevision=state.revision;rosterRevision=state.revision;toast(message);return true;
-    }catch(e){text('admin-error',errorMessage(e));return false;}finally{busy=false;document.querySelectorAll('.admin-panel button').forEach(b=>b.disabled=false);if(admin)renderResults();}
+    }catch(e){text('admin-error',errorMessage(e));return false;}finally{busy=false;document.querySelectorAll('.admin-panel button').forEach(b=>b.disabled=false);if(admin)renderResults();renderRegistration();}
   }
+  $('registration-open').onclick=()=>{renderRegistration();if($('registration-open').disabled)return;text('registration-error','');text('registration-message','');$('registration-dialog').showModal();$('registration-form').elements.name.focus?.();};
+  $('registration-form').onsubmit=async e=>{
+    e.preventDefault();if(registering)return;const form=e.currentTarget;text('registration-error','');text('registration-message','');
+    try{
+      if(!clockReady||!R.isOpen(registrationTime())||state.current.info.date.slice(0,10)!==R.EVENT)throw Error('参加受付は終了しました。');
+      if(!ready||!registrationReady||(!demoMode&&!connected))throw Error('接続の準備が完了していません。再読み込みしてから登録してください。');
+      const name=R.name(form.elements.name.value),id=R.key(name);
+      if(publicPlayers().some(p=>R.key(p.name)===id))throw Error('この名前はすでに参加者リストに登録されています。');
+      registering=true;renderRegistration();
+      if(demoMode){
+        const latest=R.normalize(JSON.parse(localStorage.getItem(R.KEY)||'{}'));
+        if(latest[id])throw Error('この名前はすでに参加登録されています。');
+        latest[id]={name,createdAt:registrationTime()};localStorage.setItem(R.KEY,JSON.stringify(latest));registrations=latest;
+      }else{
+        const result=await sdk.runTransaction(sdk.ref(db,R.PATH+'/'+id),value=>value===null?{name,createdAt:sdk.serverTimestamp()}:undefined,{applyLocally:false});
+        if(!result.committed)throw Error('この名前はすでに参加登録されています。');
+        registrations={...registrations,[id]:result.snapshot.val()};
+      }
+      form.elements.name.value='';render();text('registration-message',name+' さんの参加登録が完了しました。参加者リストに掲載しています。');
+    }catch(error){const code=String(error?.code||'');text('registration-error',/permission.denied|permission-denied|PERMISSION_DENIED/.test(code)?'参加登録が許可されませんでした。受付期限、または主催者の受付設定をご確認ください。':error?.message||'参加登録に失敗しました。接続を確認してください。');}
+    finally{registering=false;renderRegistration();}
+  };
+  $('registration-import').onclick=()=>{
+    if(!admin||busy)return;const field=$('roster-form').elements.names,names=field.value.split('\n').map(s=>s.trim()).filter(Boolean),known=new Set(names.map(s=>{try{return R.key(s);}catch{return s;}}));
+    for(const p of publicPlayers().filter(p=>p.registered))if(!known.has(R.key(p.name))){known.add(R.key(p.name));names.push(p.name);}
+    field.value=names.join('\n');renderRegistration();toast('参加登録者を名簿に追加しました。対戦表への反映は保存ボタンで行ってください。');
+  };
+  $('roster-form').elements.names.oninput=renderRegistration;
+  window.setInterval?.(renderRegistration,1000);
   $('admin-open').onclick=openAdmin;
   document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).close());
   $('demo-enter').onclick=()=>{$('login-dialog').close();setAdmin(true);openAdmin();};
@@ -397,10 +482,13 @@
   $('demo-reset').onclick=async()=>{if(busy||!demoMode)return;const expected=state.revision;if(!await confirmAction('デモをリセット','このブラウザ内のデモ大会・過去大会を初期状態に戻します。続けますか？'))return;await save(s=>{const fresh=C.demo();s.current=fresh.current;s.archives={};},'デモをリセットしました。',expected);populateForms();};
   $('history-list').onclick=e=>{const b=e.target.closest('[data-archive]');if(!b)return;const c=state.archives[b.dataset.archive];if(!c)return;text('archive-title',c.info.title);$('archive-content').innerHTML=`<p class="subtle">${esc(dateLabel(c.info.date,c.info.time))} · ${esc(formatName(c.info))}</p><p class="description">${esc(c.info.description)}</p><p class="subtle">開催場所：${esc(c.info.venue)} / 優勝賞品・賞金：${esc(c.info.prize)}</p><h3>大会ルール</h3><div class="rules-text rich">${rulesHtml(c.info.rules)}</div><h3 style="margin-top:24px">順位・成績</h3>${c.info.format==='league-knockout'?groupRankingHtml(c):tableHtml(c)}<h3 style="margin-top:24px">対戦表・試合結果</h3>${c.info.format==='league-knockout'?C.leagues(c).map(l=>'<h3 class="league-heading">リーグ '+esc(l)+'</h3>'+matchListHtml(C.leagueView(c,l),'all','all')).join(''):matchListHtml(c,'all','all')}${c.playoff?'<h3 class="league-heading">決勝トーナメント</h3>'+matchListHtml(C.playoffView(c),'all','all'):''}`;$('archive-dialog').showModal();};
   window.addEventListener('storage',e=>{if(!demoMode||e.key!==KEY)return;try{state=e.newValue?C.normalize(JSON.parse(e.newValue)):C.demo();render();}catch{connection('デモデータの読み込みに失敗しました。','error-state');}});
-  async function boot(){if(demoMode){try{const raw=localStorage.getItem(KEY);state=raw?C.normalize(JSON.parse(raw)):C.demo();if(raw&&localStorage.getItem(CONTENT_KEY)!=='applied'){const defaults=C.empty().current.info;state.current.info.date=defaults.date;state.current.info.time='';state.current.info.prize=defaults.prize;state.current.info.rules=defaults.rules;}localStorage.setItem(CONTENT_KEY,'applied');localStorage.setItem(KEY,JSON.stringify(state));ready=true;connection('DEMO / サンプル大会です。編集内容はこのブラウザ内だけに保存されます。');}catch{state=C.demo();ready=true;connection('DEMO / ブラウザ内保存が利用できません。編集は保存に失敗する場合があります。','error-state');}render();return;}
+  window.addEventListener('storage',e=>{if(!demoMode||e.key!==R.KEY)return;try{registrations=R.normalize(JSON.parse(e.newValue||'{}'));render();}catch{registrationFailed=true;renderRegistration();}});
+  async function boot(){if(demoMode){try{registrations=R.normalize(JSON.parse(localStorage.getItem(R.KEY)||'{}'));registrationReady=true;}catch{registrationFailed=true;}try{const raw=localStorage.getItem(KEY);state=raw?C.normalize(JSON.parse(raw)):C.demo();if(raw&&localStorage.getItem(CONTENT_KEY)!=='applied'){const defaults=C.empty().current.info;state.current.info.date=defaults.date;state.current.info.time='';state.current.info.prize=defaults.prize;state.current.info.rules=defaults.rules;}localStorage.setItem(CONTENT_KEY,'applied');localStorage.setItem(KEY,JSON.stringify(state));ready=true;connection('DEMO / サンプル大会です。編集内容はこのブラウザ内だけに保存されます。');}catch{state=C.demo();ready=true;connection('DEMO / ブラウザ内保存が利用できません。編集は保存に失敗する場合があります。','error-state');}render();return;}
     try{const required=['apiKey','authDomain','databaseURL','projectId'];if(required.some(k=>!config.firebase[k]))throw Error('firebase-config.js の接続情報が不足しています。');
       const base='https://www.gstatic.com/firebasejs/13.0.0/';const [appMod,authMod,dbMod]=await Promise.all([import(base+'firebase-app.js'),import(base+'firebase-auth.js'),import(base+'firebase-database.js')]);sdk={...authMod,...dbMod};const app=appMod.initializeApp(config.firebase);auth=sdk.getAuth(app);db=sdk.getDatabase(app);dataRef=sdk.ref(db,'mindBattleTournament');
-      sdk.onValue(sdk.ref(db,'.info/connected'),snapshot=>{connected=snapshot.val()===true;connection(connected?'ONLINE / 大会情報を同期しています。':'OFFLINE / 接続待ちです。表示は最新でない場合があります。',connected?'live':'error-state');});
+      sdk.onValue(sdk.ref(db,'.info/connected'),snapshot=>{connected=snapshot.val()===true;connection(connected?'ONLINE / 大会情報を同期しています。':'OFFLINE / 接続待ちです。表示は最新でない場合があります。',connected?'live':'error-state');renderRegistration();});
+      sdk.onValue(sdk.ref(db,'.info/serverTimeOffset'),snapshot=>{const offset=snapshot.val();clockReady=Number.isFinite(offset);serverOffset=clockReady?offset:0;renderRegistration();},()=>{clockReady=false;registrationFailed=true;renderRegistration();});
+      sdk.onValue(sdk.ref(db,R.PATH),snapshot=>{registrations=R.normalize(snapshot.val());registrationReady=true;registrationFailed=false;render();},()=>{registrationReady=false;registrationFailed=true;renderRegistration();});
       sdk.onValue(dataRef,snapshot=>{state=C.normalize(snapshot.val());ready=true;render();},error=>{ready=false;connection('大会情報を読み込めませんでした。Firebaseの設定・読み取りルールを確認してください。','error-state');text('admin-error',errorMessage(error));});
       sdk.onAuthStateChanged(auth,user=>setAdmin(!!user&&(config.adminUids||[]).includes(user.uid),user?.email||''));
     }catch(e){ready=false;render();connection('接続エラー / '+errorMessage(e),'error-state');}
