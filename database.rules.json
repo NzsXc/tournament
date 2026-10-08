@@ -1,0 +1,404 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "mindBattleTournament": {
+      ".read": true,
+      ".write": "auth != null && auth.uid === 'l1cZr0ZqidMPYShPpmIp3IGDgJB3'",
+      ".validate": "newData.hasChildren(['revision', 'current'])",
+      "revision": {
+        ".validate": "newData.isNumber() && newData.val() >= 1 && ((!data.exists() && newData.val() === 1) || newData.val() === data.val() + 1)"
+      },
+      "current": {
+        ".validate": "newData.hasChildren(['info'])",
+        "info": {
+          ".validate": "newData.hasChildren(['title', 'edition', 'venue', 'phase', 'format', 'bestOf', 'prize'])",
+          "title": {
+            ".validate": "newData.isString() && newData.val().length <= 80"
+          },
+          "edition": {
+            ".validate": "newData.isString() && newData.val().length <= 40"
+          },
+          "date": {
+            ".validate": "newData.isString() && newData.val().length <= 24"
+          },
+          "venue": {
+            ".validate": "newData.isString() && newData.val().length <= 80"
+          },
+          "description": {
+            ".validate": "newData.isString() && newData.val().length <= 1000"
+          },
+          "notice": {
+            ".validate": "newData.isString() && newData.val().length <= 1000"
+          },
+          "prize": {
+            ".validate": "newData.isString() && newData.val().length <= 80"
+          },
+          "gameUrl": {
+            ".validate": "newData.isString() && newData.val().length <= 500"
+          },
+          "rules": {
+            ".validate": "newData.isString() && newData.val().length <= 10000"
+          },
+          "phase": {
+            ".validate": "newData.val() === 'scheduled' || newData.val() === 'open' || newData.val() === 'live' || newData.val() === 'finished'"
+          },
+          "format": {
+            ".validate": "newData.val() === 'round-robin' || newData.val() === 'knockout' || newData.val() === 'league-knockout'"
+          },
+          "bestOf": {
+            ".validate": "newData.val() === 1 || newData.val() === 3"
+          },
+          "$other": {
+            ".validate": false
+          },
+          "time": {
+            ".validate": "newData.isString() && newData.val().length <= 8"
+          },
+          "leagueCount": {
+            ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 8"
+          }
+        },
+        "players": {
+          "$player": {
+            ".validate": "newData.hasChildren(['id', 'name', 'seed'])",
+            "id": {
+              ".validate": "newData.isString() && newData.val() === $player"
+            },
+            "name": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "seed": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+            },
+            "$other": {
+              ".validate": false
+            },
+            "league": {
+              ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+            }
+          }
+        },
+        "matches": {
+          "$match": {
+            ".validate": "newData.hasChildren(['id', 'round', 'slot', 'a', 'b', 'scoreA', 'scoreB', 'bestOf', 'winner', 'status', 'note'])",
+            "id": {
+              ".validate": "newData.isString() && newData.val() === $match"
+            },
+            "round": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+            },
+            "slot": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 16"
+            },
+            "a": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "b": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "scoreA": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+            },
+            "scoreB": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+            },
+            "bestOf": {
+              ".validate": "newData.val() === 1 || newData.val() === 3"
+            },
+            "winner": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "status": {
+              ".validate": "newData.val() === 'pending' || newData.val() === 'done' || newData.val() === 'bye'"
+            },
+            "note": {
+              ".validate": "newData.isString() && newData.val().length <= 100"
+            },
+            "$other": {
+              ".validate": false
+            },
+            "league": {
+              ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        },
+        "playoff": {
+          ".validate": "newData.hasChildren(['entrants', 'bestOf', 'matches'])",
+          "entrants": {
+            "$player": {
+              ".validate": "newData.hasChildren(['id', 'name', 'seed'])",
+              "id": {
+                ".validate": "newData.isString() && newData.val() === $player"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "seed": {
+                ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "league": {
+                ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+              }
+            }
+          },
+          "matches": {
+            "$match": {
+              ".validate": "newData.hasChildren(['id', 'round', 'slot', 'a', 'b', 'scoreA', 'scoreB', 'bestOf', 'winner', 'status', 'note'])",
+              "id": {
+                ".validate": "newData.isString() && newData.val() === $match"
+              },
+              "round": {
+                ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+              },
+              "slot": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 16"
+              },
+              "a": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "b": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "scoreA": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+              },
+              "scoreB": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+              },
+              "bestOf": {
+                ".validate": "newData.val() === 1 || newData.val() === 3"
+              },
+              "winner": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "status": {
+                ".validate": "newData.val() === 'pending' || newData.val() === 'done' || newData.val() === 'bye'"
+              },
+              "note": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "league": {
+                ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+              }
+            }
+          },
+          "bestOf": {
+            ".validate": "newData.val() === 1 || newData.val() === 3"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "archives": {
+        "$archive": {
+          ".validate": "newData.hasChildren(['info'])",
+          "info": {
+            ".validate": "newData.hasChildren(['title', 'edition', 'venue', 'phase', 'format', 'bestOf', 'prize'])",
+            "title": {
+              ".validate": "newData.isString() && newData.val().length <= 80"
+            },
+            "edition": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "date": {
+              ".validate": "newData.isString() && newData.val().length <= 24"
+            },
+            "venue": {
+              ".validate": "newData.isString() && newData.val().length <= 80"
+            },
+            "description": {
+              ".validate": "newData.isString() && newData.val().length <= 1000"
+            },
+            "notice": {
+              ".validate": "newData.isString() && newData.val().length <= 1000"
+            },
+            "prize": {
+              ".validate": "newData.isString() && newData.val().length <= 80"
+            },
+            "gameUrl": {
+              ".validate": "newData.isString() && newData.val().length <= 500"
+            },
+            "rules": {
+              ".validate": "newData.isString() && newData.val().length <= 10000"
+            },
+            "phase": {
+              ".validate": "newData.val() === 'scheduled' || newData.val() === 'open' || newData.val() === 'live' || newData.val() === 'finished'"
+            },
+            "format": {
+              ".validate": "newData.val() === 'round-robin' || newData.val() === 'knockout' || newData.val() === 'league-knockout'"
+            },
+            "bestOf": {
+              ".validate": "newData.val() === 1 || newData.val() === 3"
+            },
+            "$other": {
+              ".validate": false
+            },
+            "time": {
+              ".validate": "newData.isString() && newData.val().length <= 8"
+            },
+            "leagueCount": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 8"
+            }
+          },
+          "players": {
+            "$player": {
+              ".validate": "newData.hasChildren(['id', 'name', 'seed'])",
+              "id": {
+                ".validate": "newData.isString() && newData.val() === $player"
+              },
+              "name": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "seed": {
+                ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "league": {
+                ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+              }
+            }
+          },
+          "matches": {
+            "$match": {
+              ".validate": "newData.hasChildren(['id', 'round', 'slot', 'a', 'b', 'scoreA', 'scoreB', 'bestOf', 'winner', 'status', 'note'])",
+              "id": {
+                ".validate": "newData.isString() && newData.val() === $match"
+              },
+              "round": {
+                ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+              },
+              "slot": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 16"
+              },
+              "a": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "b": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "scoreA": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+              },
+              "scoreB": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+              },
+              "bestOf": {
+                ".validate": "newData.val() === 1 || newData.val() === 3"
+              },
+              "winner": {
+                ".validate": "newData.isString() && newData.val().length <= 40"
+              },
+              "status": {
+                ".validate": "newData.val() === 'pending' || newData.val() === 'done' || newData.val() === 'bye'"
+              },
+              "note": {
+                ".validate": "newData.isString() && newData.val().length <= 100"
+              },
+              "$other": {
+                ".validate": false
+              },
+              "league": {
+                ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+              }
+            }
+          },
+          "$other": {
+            ".validate": false
+          },
+          "savedAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "playoff": {
+            ".validate": "newData.hasChildren(['entrants', 'bestOf', 'matches'])",
+            "entrants": {
+              "$player": {
+                ".validate": "newData.hasChildren(['id', 'name', 'seed'])",
+                "id": {
+                  ".validate": "newData.isString() && newData.val() === $player"
+                },
+                "name": {
+                  ".validate": "newData.isString() && newData.val().length <= 40"
+                },
+                "seed": {
+                  ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+                },
+                "$other": {
+                  ".validate": false
+                },
+                "league": {
+                  ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+                }
+              }
+            },
+            "matches": {
+              "$match": {
+                ".validate": "newData.hasChildren(['id', 'round', 'slot', 'a', 'b', 'scoreA', 'scoreB', 'bestOf', 'winner', 'status', 'note'])",
+                "id": {
+                  ".validate": "newData.isString() && newData.val() === $match"
+                },
+                "round": {
+                  ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 32"
+                },
+                "slot": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 16"
+                },
+                "a": {
+                  ".validate": "newData.isString() && newData.val().length <= 40"
+                },
+                "b": {
+                  ".validate": "newData.isString() && newData.val().length <= 40"
+                },
+                "scoreA": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+                },
+                "scoreB": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2"
+                },
+                "bestOf": {
+                  ".validate": "newData.val() === 1 || newData.val() === 3"
+                },
+                "winner": {
+                  ".validate": "newData.isString() && newData.val().length <= 40"
+                },
+                "status": {
+                  ".validate": "newData.val() === 'pending' || newData.val() === 'done' || newData.val() === 'bye'"
+                },
+                "note": {
+                  ".validate": "newData.isString() && newData.val().length <= 100"
+                },
+                "$other": {
+                  ".validate": false
+                },
+                "league": {
+                  ".validate": "newData.isString() && newData.val().matches(/^[A-H]$/)"
+                }
+              }
+            },
+            "bestOf": {
+              ".validate": "newData.val() === 1 || newData.val() === 3"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      },
+      "$other": {
+        ".validate": false
+      }
+    }
+  }
+}
