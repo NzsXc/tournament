@@ -1,19 +1,15 @@
-// Firebase接続前はデモモード。実運用時は firebase:null を下の設定オブジェクトに置き換えます。
-// Webアプリ用のfirebaseConfigと管理者UIDのみを使用。パスワードやサービスアカウント鍵は書かないでください。
+// 心理バトル大会サイトのFirebase接続設定
 window.MIND_BATTLE_CONFIG = {
-  firebase: null,
-  adminUids: []
-};
-
-/* 設定例
-window.MIND_BATTLE_CONFIG = {
-  firebase: {
-    apiKey: "Firebase WebアプリのAPIキー",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_DATABASE.firebasedatabase.app",
-    projectId: "YOUR_PROJECT",
-    appId: "Firebase WebアプリのappId"
+  "firebase": {
+    "apiKey": "AIzaSyB13tj24tGH3VLI6zHkT-LiN3HOCqIjt3k",
+    "authDomain": "tournament-60716.firebaseapp.com",
+    "databaseURL": "https://tournament-60716-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "projectId": "tournament-60716",
+    "storageBucket": "tournament-60716.firebasestorage.app",
+    "messagingSenderId": "499163470969",
+    "appId": "1:499163470969:web:f6ce64b89de8c5fb2748a8"
   },
-  adminUids: ["Authenticationの管理者UID"]
+  "adminUids": [
+    "l1cZr0ZqidMPYShPpmIp3IGDgJB3"
+  ]
 };
-*/
