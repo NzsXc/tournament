@@ -399,6 +399,24 @@
       "$other": {
         ".validate": false
       }
+    },
+    "mindBattleRegistrations": {
+      "2026-10-11": {
+        ".read": true,
+        "$entry": {
+          ".write": "!data.exists() && newData.exists() && now < 1791709200000 && (!root.child('mindBattleTournament/current/info/date').exists() || root.child('mindBattleTournament/current/info/date').val().beginsWith('2026-10-11'))",
+          ".validate": "newData.hasChildren(['name', 'createdAt'])",
+          "name": {
+            ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 40 && newData.val().matches(/^\\S([^\\r\\n]*\\S)?$/) && $entry === ('n_' + newData.val().toLowerCase().replace('%', '%25').replace('.', '%2E').replace('#', '%23').replace('$', '%24').replace('[', '%5B').replace(']', '%5D').replace('/', '%2F'))"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber() && newData.val() === now"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
     }
   }
 }
