@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#121417"><meta name="description" content="心理バトルの大会情報、参加者、対戦表と試合結果。">
+<title>心理バトル | 大会公式サイト</title>
+<style>:root{color-scheme:dark;--bg:#121417;--surface:#1a1d21;--line:#30343a;--text:#f0eee9;--muted:#a2a6ac;--red:#df746b;--blue:#82a8cb;--accent:#efe5d2;--radius:12px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--text);font-family:"Yu Gothic", "Hiragino Kaku Gothic ProN", system-ui,sans-serif;font-size:14px;line-height:1.7}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:wait;opacity:.45}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:4px}[hidden]{display:none!important}.wrap{max-width:1200px;margin:auto;padding:0 36px}.site-header{position:sticky;top:0;background:rgba(18,20,23,.96);border-bottom:1px solid var(--line);z-index:10}.header-inner{max-width:1200px;padding:20px 36px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;gap:12px;align-items:center;font-size:17px;letter-spacing:.13em;font-weight:800;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:.06em;font-weight:500}.brand-mark{display:flex;width:31px;height:31px;gap:3px;transform:skew(-12deg)}.brand-mark i,.brand-mark b{width:14px;border-radius:2px;background:var(--red)}.brand-mark b{background:var(--blue)}.desktop-nav{display:flex;gap:25px;font-size:12px;color:var(--muted)}.desktop-nav a:hover{color:var(--text)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:12px 20px;border:1px solid var(--line);border-radius:6px;font-weight:600;font-size:13px;background:transparent;color:var(--text);min-height:44px;transition:background .2s,transform .2s}.btn:hover{background:#2c3035}.btn.primary{background:var(--accent);color:#222326;border-color:var(--accent)}.btn.primary:hover{background:#fff3db}.btn.ghost{background:transparent}.btn.small{padding:8px 12px;font-size:11px;min-height:38px}.btn.danger{color:var(--red);border-color:var(--red)}.btn.full{width:100%}.connection-strip{text-align:center;padding:6px 20px;background:#27211b;color:#d8b98a;border-bottom:1px solid #3c3325;font-size:11px;letter-spacing:.025em}.connection-strip.live{background:#192822;color:#a5c5b0;border-color:#263b31}.connection-strip.error-state{background:#382120;color:#efb2aa}.hero{display:grid;grid-template-columns:1.2fr .8fr;padding:60px 0 46px;gap:48px;align-items:center}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--muted);font-family:system-ui,sans-serif;font-size:11px;letter-spacing:.15em}.dot{width:6px;height:6px;border-radius:50%;background:var(--red)}.tag{display:inline-block;padding:3px 9px;font-size:10px;letter-spacing:.03em;border:1px solid var(--line);border-radius:4px;color:var(--muted)}h1{font-size:clamp(28px,3.1vw,43px);line-height:1.35;letter-spacing:-.055em;margin:23px 0 12px;overflow-wrap:anywhere}.hero-tagline{font-size:22px;font-weight:600;letter-spacing:.08em;margin:0 0 17px}.description{color:var(--muted);font-size:13px;white-space:pre-line;max-width:500px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:27px}.hero-details{display:flex;flex-wrap:wrap;gap:28px;margin-top:31px}.hero-details div{border-left:1px solid var(--line);padding-left:16px}.hero-details small{display:block;color:var(--muted);font-size:10px;margin-bottom:5px}.hero-details strong{font-size:12px;font-weight:500}.hero-art{position:relative;height:320px;overflow:hidden;background:#1b2026;border:1px solid #343942;border-radius:10px;isolation:isolate}.art-grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff06 1px,transparent 1px),linear-gradient(90deg,#ffffff06 1px,transparent 1px);background-size:32px 32px}.red-tile,.blue-tile{position:absolute;top:70px;width:150px;height:176px;border-radius:8px;display:flex;align-items:end;padding:16px;transform:rotate(-12deg);font:800 10px system-ui;letter-spacing:.2em}.red-tile{left:38px;background:#b9675f;box-shadow:12px 10px 0 #9a575044}.blue-tile{right:35px;top:73px;transform:rotate(12deg);background:#7493b1;box-shadow:-12px 10px 0 #54769244}.bolt{position:absolute;width:65px;height:204px;left:calc(50% - 32px);top:50px;background:var(--accent);clip-path:polygon(70% 0,6% 56%,40% 56%,20% 100%,95% 40%,60% 40%);filter:drop-shadow(0 0 8px #fff)}.art-caption{position:absolute;bottom:20px;left:20px;font:600 9px system-ui;letter-spacing:.2em;color:#a0a6ad}.art-corner{position:absolute;top:18px;right:18px;font:500 10px system-ui;letter-spacing:.12em;color:#a0a6ad}.notice{display:flex;gap:22px;padding:16px 22px;border:1px solid var(--line);border-radius:8px;background:#1a1c20;align-items:center}.notice-label{flex-shrink:0;color:var(--accent);font-size:11px;border-right:1px solid var(--line);padding-right:22px}.notice p{margin:0;color:var(--muted);font-size:12px;white-space:pre-line;overflow-wrap:anywhere}.metrics{display:grid;grid-template-columns:repeat(4,1fr);margin:28px 0 10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0}.metrics>div{padding:0 24px;border-right:1px solid var(--line)}.metrics>div:first-child{padding-left:0}.metrics>div:last-child{border:none}.metrics span{display:block;font-size:11px;color:var(--muted);margin-bottom:10px}.metrics strong{font:600 34px/1.2 system-ui,sans-serif;font-variant-numeric:tabular-nums}.metrics strong small{font:400 13px system-ui;color:var(--muted);margin-left:10px}.metrics .prize{font-size:16px;font-family:inherit;display:block;overflow-wrap:anywhere;padding-top:8px}.progress-track{height:3px;max-width:130px;background:var(--line);margin-top:10px}.progress-track div{background:var(--blue);height:100%;transition:width .4s}.section{padding-top:48px}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.kicker{font:500 10px system-ui;letter-spacing:.18em;color:var(--muted)}h2{font-size:20px;font-weight:650;letter-spacing:.025em;margin:4px 0 0}h3{font-size:15px;margin-top:0}.subtle{font-size:11px;color:var(--muted);white-space:pre-line}.match-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}.segmented{display:flex;gap:3px;background:#1b1e22;border:1px solid var(--line);border-radius:6px;padding:4px}.segmented button,.admin-tabs button{border:0;background:transparent;color:var(--muted);padding:7px 15px;font-size:11px;border-radius:4px;min-height:36px}.segmented button.active,.admin-tabs button.active{background:#353a42;color:var(--text)}.round-label{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:11px}.round-label select{width:auto;min-width:115px;margin:0;padding:8px 10px;font-size:12px}.round-heading{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.1em;margin:24px 0 12px}.round-heading:after{content:"";flex:1;height:1px;background:var(--line)}.match-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.match-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}.match-top{padding:10px 14px;display:flex;justify-content:space-between;font-size:10px;color:var(--muted);border-bottom:1px solid #292d33}.match-top .done{color:#a3b9a9}.match-player{display:flex;align-items:center;gap:9px;padding:9px 14px;font-size:12px;min-height:43px}.match-player strong{font:600 17px system-ui;margin-left:auto}.match-player.winner{background:#c4d3c008}.match-player.loser{opacity:.5}.avatar{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:5px;background:#b773691d;color:#d8a19b;font:500 10px system-ui;border:1px solid #b773692b;flex-shrink:0}.avatar.blue{background:#84a6c21b;color:#a5bed4;border-color:#84a6c22b}.player-name{overflow-wrap:anywhere}.match-note{font-size:10px;color:var(--muted);padding:5px 14px 10px}.lower-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:38px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}th{font-size:10px;color:var(--muted);font-weight:500;text-align:left;padding:12px 10px;border-bottom:1px solid var(--line)}td{padding:14px 10px;border-bottom:1px solid #262b31}td:first-child{font:600 15px system-ui;color:var(--muted);width:45px}.rank-top td:first-child{color:var(--accent)}.table-player{display:flex;align-items:center;gap:10px}.player-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.player-pill{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:7px;font-size:12px;background:#191c20}.player-pill .seed{color:var(--muted);font:400 9px system-ui;margin-left:auto}.rules-section{margin-top:12px}.rules-text{white-space:pre-wrap;overflow-wrap:anywhere;padding:23px 28px;border-left:2px solid var(--blue);background:#1a1d21;font-size:12px;color:#c2c5ca;line-height:2.3}.empty{padding:30px;text-align:center;border:1px dashed var(--line);color:var(--muted);border-radius:8px;font-size:12px}.archive-card{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:23px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--text);text-align:left;margin-bottom:12px}.archive-card:hover{background:#22262c}.archive-card strong{display:block;font-size:15px}.archive-card small{color:var(--muted);font-size:11px}.archive-card .arrow{font-size:22px;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:70px;padding:33px 0}.footer-inner{display:flex;justify-content:space-between;align-items:center}.footer-brand{display:block;font-size:12px}.footer-inner>div:last-child{text-align:right}.footer-inner a{font-size:11px}.footer-inner small{display:block;color:var(--muted);font-size:10px;margin-top:6px}dialog{color:var(--text);background:#1b1f24;border:1px solid #454b55;padding:26px;border-radius:12px;width:calc(100% - 32px);max-width:450px;max-height:calc(100dvh - 40px);overflow:auto;box-shadow:0 20px 120px #0009}dialog::backdrop{background:#05080cbb;backdrop-filter:blur(4px)}.admin-dialog{max-width:810px}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.dialog-heading h2{font-size:21px}.icon-button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:6px;font-size:24px;line-height:1;width:36px;height:36px;flex-shrink:0}label{display:block;color:#bfc3ca;font-size:12px;margin:0 0 16px}input,select,textarea{display:block;width:100%;background:#12161b;color:var(--text);border:1px solid #373e48;border-radius:5px;padding:11px 12px;margin-top:7px;font-size:14px;min-height:42px}textarea{resize:vertical;line-height:1.8}input[type=datetime-local]{color-scheme:dark}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.error{color:#f1a99e;font-size:12px;white-space:pre-line}.error:empty{display:none}.admin-status{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}.admin-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding-bottom:12px;margin:18px 0;overflow-x:auto;white-space:nowrap}.admin-tabs button{font-size:12px}.admin-hint{font-size:12px;color:var(--muted);margin-bottom:20px}.admin-match{border:1px solid var(--line);border-radius:8px;padding:15px;margin:12px 0}.admin-match-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;margin-bottom:12px}.admin-match-heading .score{font:600 20px system-ui}.result-actions{display:flex;flex-wrap:wrap;gap:8px}.result-actions .a{border-color:#ad6e65;color:#e7a299}.result-actions .b{border-color:#637e96;color:#a3c4e2}.admin-box{border:1px solid var(--line);border-radius:7px;padding:22px;margin-bottom:18px}.confirm-actions{display:flex;justify-content:end;gap:10px;margin-top:24px}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);z-index:100;padding:13px 23px;border-radius:8px;background:var(--accent);color:#25272c;box-shadow:0 8px 40px #0005;max-width:calc(100% - 36px);font-size:12px}.skip{position:fixed;left:12px;top:-80px;z-index:100;background:var(--accent);color:#222;padding:12px}.skip:focus{top:12px}@media(min-width:1500px){.hero-art{height:330px}}@media(max-width:1000px){.desktop-nav{gap:14px}.hero{gap:25px}.hero-art{height:285px}.red-tile{left:20px;width:125px}.blue-tile{right:20px;width:125px}.match-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.wrap{padding:0 22px}.header-inner{padding:16px 22px}.desktop-nav{display:none}.brand{font-size:14px}.brand small{font-size:8px}.hero{padding:36px 0 28px;grid-template-columns:1fr;gap:28px}.hero-art{height:215px}.red-tile,.blue-tile{height:130px;top:34px;width:145px}.red-tile{left:calc(50% - 150px)}.blue-tile{right:calc(50% - 150px)}.bolt{top:21px;height:160px;width:50px;left:calc(50% - 25px)}.hero-tagline{font-size:20px}.hero-details{gap:20px}.metrics{grid-template-columns:repeat(2,1fr);row-gap:23px;padding:20px 0}.metrics>div{padding:0 18px}.metrics>div:nth-child(3){padding-left:0}.metrics>div:nth-child(2){border:none}.metrics strong{font-size:30px}.metrics span{margin-bottom:7px}.notice{padding:13px 16px;gap:14px}.notice-label{padding-right:14px}.match-grid{grid-template-columns:repeat(2,1fr)}.lower-grid{grid-template-columns:1fr;gap:0}.section{padding-top:34px}.section-heading{margin-bottom:16px}h2{font-size:18px}.round-label{gap:7px}.round-label select{min-width:90px}.segmented button{padding:6px 10px}.rules-text{padding:18px 20px}dialog{padding:20px}.form-grid{grid-template-columns:1fr}.footer-inner{gap:20px}.admin-match-heading{align-items:start}.admin-tabs button{padding:7px 10px}.hero-actions .btn{padding:11px 16px}}@media(max-width:390px){.wrap{padding:0 16px}.header-inner{padding:14px 16px}.brand{font-size:12px}.btn.small{font-size:10px;padding:7px 9px}.match-grid{grid-template-columns:1fr}.hero-details{gap:14px}.hero-details strong{font-size:11px}.player-list{grid-template-columns:1fr}.section-heading .subtle{font-size:10px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* 複数リーグ・決勝トーナメントと指定ルールの表示 */
+.match-toolbar{flex-wrap:wrap;justify-content:flex-start}.match-toolbar>.segmented{margin-right:auto}.league-heading{margin:24px 0 12px;color:var(--blue)}.group-ranking{margin-bottom:24px}.group-ranking h3{font-size:13px;color:var(--blue)}.rules-text.rich{white-space:normal}.rules-text h2{font-size:19px;margin:0 0 20px;color:var(--text)}.rules-text h3{font-size:14px;margin:25px 0 8px;color:var(--text)}.rules-text p{margin:8px 0}.rules-text ul{margin:8px 0;padding-left:24px}.league-assignment-row{display:grid;grid-template-columns:1fr 115px;gap:14px;align-items:center;padding:7px 0}.league-assignment-row select{margin:0}.entrant-row{display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;margin-bottom:12px}.entrant-row select{margin:0}.entrant-row span{color:var(--muted);font-size:11px}.qualification-table{margin-bottom:22px}@media(max-width:760px){.match-toolbar .round-label{margin-bottom:0}.match-toolbar>.segmented{width:100%;margin-right:0;justify-content:space-around}.match-toolbar .round-label select{max-width:175px}.league-assignment-row{grid-template-columns:1fr 95px}.rules-text h2{font-size:17px}}
+
+.rules-view #main>:not(#rules){display:none}.rules-view #rules{min-height:65vh;padding-top:36px}.rules-view #rules .section-heading h2{display:none}#rules-back{margin-bottom:20px}.rules-view #rules .rules-text{margin-top:12px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="#overview" aria-label="心理バトル 大会ホーム"><span class="brand-mark" aria-hidden="true"><i></i><b></b></span><span>MIND BATTLE<small>心理バトル 大会公式サイト</small></span></a>
+<nav class="desktop-nav" aria-label="メイン"><a href="#overview">大会概要</a><a href="#matches">対戦表</a><a href="#standings">順位</a><a href="#history">過去大会</a></nav>
+<button class="btn small ghost" id="admin-open"><span aria-hidden="true">⚙</span> <span id="admin-label">管理者ログイン</span></button>
+</div></header>
+<div class="connection-strip" id="connection" role="status">読み込み中…</div>
+<main id="main" class="wrap">
+<section class="hero" id="overview">
+<div class="hero-copy"><div class="eyebrow"><span class="dot"></span><span id="edition">TOURNAMENT</span><span class="tag" id="phase">準備中</span></div>
+<h1 id="title">心理バトル 大会</h1><p class="hero-tagline">読み合いの、その先へ。</p><p id="description" class="description"></p>
+<div class="hero-actions"><a class="btn primary" href="#matches">対戦表を見る <span aria-hidden="true">↗</span></a><a class="btn ghost" href="?view=rules">大会ルール <span aria-hidden="true">→</span></a><a class="btn ghost" id="game-link" hidden target="_blank" rel="noopener noreferrer">ゲームを開く ↗</a></div>
+<div class="hero-details"><div><small>開催日時</small><strong id="event-date">未定</strong></div><div><small>開催場所</small><strong id="venue">オンライン</strong></div><div><small>大会形式</small><strong id="format">未設定</strong></div></div>
+</div>
+<div class="hero-art" aria-hidden="true"><div class="art-grid"></div><div class="red-tile"><span>READ</span></div><div class="blue-tile"><span>REACT</span></div><div class="bolt"></div><div class="art-caption">EVERY CHOICE COUNTS.</div><div class="art-corner">MB / VS</div></div>
+</section>
+<section class="notice"><span class="notice-label">お知らせ</span><p id="notice"></p></section>
+<div class="metrics"><div><span>参加プレイヤー</span><strong id="player-count">0<small>人</small></strong></div><div><span>終了した試合</span><strong id="completed-count">0<small>/ 0</small></strong></div><div><span>試合進行</span><strong id="progress-label">0<small>%</small></strong><div class="progress-track"><div id="progress-fill"></div></div></div><div><span>優勝賞品・賞金</span><strong class="prize" id="prize">未定</strong></div></div>
+<section class="section" id="matches"><div class="section-heading"><div><span class="kicker">MATCH CENTER</span><h2>対戦表・試合結果</h2></div><span class="subtle" id="match-format"></span></div>
+<div class="match-toolbar"><div class="segmented" role="group" aria-label="試合を絞り込み"><button class="active" data-filter="all" aria-pressed="true">すべて</button><button data-filter="pending" aria-pressed="false">未終了</button><button data-filter="done" aria-pressed="false">終了</button></div><label class="round-label">ステージ<select id="match-stage"><option value="league">リーグ戦</option><option value="playoff">決勝トーナメント</option></select></label><label class="round-label" id="league-filter-label">リーグ<select id="league-filter"><option value="all">すべて</option></select></label><label class="round-label">ラウンド<select id="round-filter"><option value="all">すべて</option></select></label></div><p class="subtle" id="stage-note"></p><div id="matches-content"></div></section>
+<div class="lower-grid"><section class="section" id="standings"><div class="section-heading"><div><span class="kicker">STANDINGS</span><h2>順位・成績</h2></div><span class="tag" id="standings-tag">暫定</span></div><p class="subtle" id="ranking-note"></p><div id="group-standings"></div><div class="table-wrap" id="ranking-table"><table><thead><tr><th>順位</th><th>プレイヤー</th><th>勝</th><th>敗</th><th>得失点</th></tr></thead><tbody id="ranking-body"></tbody></table></div></section>
+<section class="section" id="players"><div class="section-heading"><div><span class="kicker">PLAYERS</span><h2>参加者</h2></div><span class="subtle" id="roster-count"></span></div><div class="player-list" id="player-list"></div></section></div>
+<section class="section rules-section" id="rules"><div class="section-heading"><div><span class="kicker">TOURNAMENT RULES</span><h2>大会ルール</h2></div></div><a class="btn small ghost" id="rules-back" href="?view=home" hidden>← 大会トップへ戻る</a><div class="rules-text" id="rules-text"></div></section>
+<section class="section" id="history"><div class="section-heading"><div><span class="kicker">ARCHIVE</span><h2>過去の大会</h2></div></div><div id="history-list"></div></section>
+</main>
+<footer><div class="wrap footer-inner"><div class="brand footer-brand">MIND BATTLE<small>一手の選択が、勝負を変える。</small></div><div><a href="#overview">ページの先頭へ ↑</a><small>心理バトル 大会情報サイト</small></div></div></footer>
+<dialog id="login-dialog"><div class="dialog-heading"><h2>管理者ログイン</h2><button class="icon-button" data-close="login-dialog" aria-label="閉じる">×</button></div><p class="subtle" id="login-description">大会の管理者アカウントでログインしてください。</p><form id="login-form"><label>メールアドレス<input name="email" type="email" required autocomplete="username"></label><label>パスワード<input name="password" type="password" required autocomplete="current-password"></label><p id="login-error" class="error" role="alert"></p><button class="btn primary full" type="submit" id="login-submit">ログイン</button></form><button class="btn primary full" id="demo-enter" hidden>管理者デモを開く →</button></dialog>
+<dialog id="admin-dialog" class="admin-dialog"><div class="dialog-heading"><div><span class="kicker">CONTROL ROOM</span><h2>大会管理</h2></div><button class="icon-button" data-close="admin-dialog" aria-label="閉じる">×</button></div><div class="admin-status"><span id="admin-identity"></span><button class="btn small ghost" id="logout">ログアウト</button></div><p id="admin-mode-note" class="subtle"></p>
+<div class="admin-tabs" role="group" aria-label="管理メニュー"><button class="active" data-admin-tab="results">結果登録</button><button data-admin-tab="info">大会情報</button><button data-admin-tab="roster">参加者・対戦表</button><button data-admin-tab="playoff">リーグ・決勝</button><button data-admin-tab="archive">大会保存</button></div>
+<div id="admin-results" class="admin-panel"><div class="admin-hint">勝利ボタンで1勝を登録。2本先取は2勝で決着します。引き分けは再試合として扱います。</div><label class="round-label">ステージ<select id="admin-stage"><option value="league">リーグ戦</option><option value="playoff">決勝トーナメント</option></select></label><label class="round-label">ラウンド<select id="admin-round"><option value="all">すべて</option></select></label><div id="result-list"></div></div>
+<div id="admin-info" class="admin-panel" hidden><form id="info-form"><div class="form-grid"><label>大会名<input name="title" maxlength="80" required></label><label>大会表示コード<input name="edition" maxlength="40" required></label><label>開催日（日本時間）<input name="date" type="date"></label><label>開始時刻（任意・日本時間）<input name="time" type="time"></label><label>開催場所<input name="venue" maxlength="80" required></label><label>大会の状態<select name="phase"><option value="scheduled">開催予定</option><option value="open">参加受付中</option><option value="live">開催中</option><option value="finished">終了</option></select></label><label>優勝賞品・賞金<input name="prize" maxlength="80" required></label></div><label>紹介文<textarea name="description" rows="3" maxlength="1000"></textarea></label><label>お知らせ<textarea name="notice" rows="2" maxlength="1000"></textarea></label><label>ゲームURL（任意）<input name="gameUrl" type="url" placeholder="https://…" maxlength="500"></label><label>大会ルール（見出し・段落・箇条書きのHTMLを使用可）<textarea name="rules" rows="6" maxlength="10000"></textarea></label><button class="btn primary" type="submit">大会情報を保存 ↗</button></form></div>
+<div id="admin-roster" class="admin-panel" hidden><form id="roster-form"><label>参加者名（1行に1人・2〜32人）<textarea name="names" rows="10" required></textarea></label><div class="form-grid"><label>大会形式<select name="format"><option value="league-knockout">リーグ総当たり → 決勝トーナメント</option><option value="round-robin">総当たり</option><option value="knockout">トーナメント</option></select></label><label>リーグ数（複数リーグ形式のみ）<input name="leagueCount" type="number" min="1" max="8" value="2"></label><label>試合方式<select name="bestOf"><option value="1">1本勝負</option><option value="3">2本先取</option></select></label></div><p class="subtle">複数リーグでは入力順にA・B…へ均等に振り分けます。各リーグには2人以上必要です。所属は「リーグ・決勝」から変更できます。作り直すと現在の試合結果は消えます。必要なら先に大会保存・バックアップを行ってください。</p><button class="btn primary" type="submit">参加者を保存・対戦表を作成 ↗</button></form></div>
+<div id="admin-playoff" class="admin-panel" hidden>
+<div id="playoff-unavailable" class="empty">「参加者・対戦表」でリーグ総当たり → 決勝トーナメントを選択してください。</div>
+<div id="playoff-settings">
+<div class="admin-box"><h3>リーグの所属</h3><div id="league-assignment"></div><p class="subtle">所属を変更して保存するとリーグ戦の対戦表を作り直し、リーグ・決勝の試合結果をリセットします。</p><button class="btn ghost" id="league-save">所属を保存・対戦表を作成</button></div>
+<div class="admin-box"><h3>決勝トーナメントを作成</h3><p id="playoff-readiness" class="subtle"></p><div id="qualification-standings"></div><form id="playoff-form"><div class="form-grid"><label>決勝進出人数<select id="playoff-count" name="count"><option value="2">2人</option><option value="3">3人</option><option value="4" selected>4人</option><option value="5">5人</option><option value="6">6人</option><option value="7">7人</option><option value="8">8人</option></select></label><label>決勝の試合方式<select id="playoff-bestof" name="bestOf"><option value="1">1本勝負</option><option value="3" selected>2本先取</option></select></label></div><p class="subtle">リーグ順位を確認して、進出者と組み合わせ順を選択してください。同順位は自動で決着させません。各リーグから何人進出するかは管理者が決めます。</p><div id="playoff-entrants"></div><p class="subtle">選択した順で、シードを除く隣り合う選手が対戦します。2の累乗でない人数では先頭の選手からシードを割り当てます。</p><button class="btn primary" type="submit">決勝トーナメントを作成 ↗</button></form></div>
+</div></div>
+<div id="admin-archive" class="admin-panel" hidden><div class="admin-box"><h3>現在の大会を過去大会へ保存</h3><p class="subtle">大会概要・全試合・順位を保存し、一般ページの「過去の大会」に追加します。現在の大会はそのまま残ります。</p><button class="btn primary" id="archive-save">過去大会として保存 ↗</button></div><div class="admin-box"><h3>データのバックアップ</h3><p class="subtle">現在の大会と過去大会をまとめてJSONファイルに保存します。</p><button class="btn ghost" id="backup-download">バックアップをダウンロード ↓</button></div><div class="admin-box" id="demo-reset-box" hidden><h3>デモを初期状態に戻す</h3><button class="btn danger" id="demo-reset">デモをリセット</button></div></div>
+<p id="admin-error" class="error" role="alert"></p></dialog>
+<dialog id="confirm-dialog"><div class="dialog-heading"><h2 id="confirm-title">操作の確認</h2></div><p id="confirm-message"></p><div class="confirm-actions"><button class="btn ghost" id="confirm-no">キャンセル</button><button class="btn primary" id="confirm-yes">実行する</button></div></dialog>
+<dialog id="archive-dialog" class="admin-dialog"><div class="dialog-heading"><h2 id="archive-title">過去大会</h2><button class="icon-button" data-close="archive-dialog" aria-label="閉じる">×</button></div><div id="archive-content"></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script src="firebase-config.js"></script>
+<script>(function (root) {
+  'use strict';
+  const copy = x => JSON.parse(JSON.stringify(x));
+  const list = x => Object.values(x || {});
+  const DEFAULT_RULES = "<h2>心理バトル 大会ルール</h2>\n<h3>1. 大会形式</h3>\n<p>大会形式は、参加人数の確定後に決定します。</p>\n<p>参加人数に応じて、総当たり戦またはトーナメント戦を採用します。</p>\n<h3>2. 試合中のトラブル</h3>\n<p>ゲーム側の不具合が発生し、正常に試合を続行できないと主催者が判断した場合は、その試合を無効として再試合を行います。</p>\n<p>プレイヤー側の通信切断・離脱については、切断・離脱したプレイヤーの敗北とします。</p>\n<h3>3. 主催者本人が関係する試合</h3>\n<p>主催者本人が関係する試合中にゲーム側の不具合が疑われ、試合を中断する必要があると主催者が判断した場合、対戦相手に中断の確認を取ります。</p>\n<p>対戦相手が承認した場合は、試合を中断します。</p>\n<p>対戦相手が中断を拒否した場合は、試合に関係していない第三者3人による多数決で、中断するかどうかを決定します。</p>\n<p>中断後、ゲーム側の不具合であると判断された場合は再試合とします。</p>\n<h3>4. 引き分け</h3>\n<p>試合が引き分けとなった場合は、再試合を行います。</p>\n<h3>5. 助言の禁止</h3>\n<p>試合中に、他の参加者・観戦者などから助言を受けることを禁止します。</p>\n<h3>6. 不正行為の禁止</h3>\n<p>以下のような不正行為を禁止します。</p>\n<ul><li>バグの意図的な利用</li><li>チートの使用</li><li>その他、試合を不正に有利にする行為</li></ul>\n<p>不正行為が確認された場合は、失格とする場合があります。</p>\n<h3>7. 賞金</h3>\n<p>大会には少額の賞金を設定します。</p>\n<p>今回の賞金は1,000円です。</p>\n<p>賞金は大会終了後に支払います。</p>\n<p>支払い方法は、以下のいずれかとします。</p>\n<ul><li>PayPay</li><li>手渡し</li></ul>";
+  function info() {
+    return { title: '心理バトル 大会', edition: 'TOURNAMENT', date: '2026-10-11', time: '', venue: 'オンライン', phase: 'scheduled', format: 'league-knockout', leagueCount: 2, bestOf: 1, description: '一手の選択が、勝負を変える。\n心理バトルの大会情報・対戦結果をここから。', notice: '参加者・開始時刻は管理者からのお知らせをお待ちください。', prize: '1,000円', gameUrl: '', rules: DEFAULT_RULES };
+  }
+  function empty() { return { revision: 0, current: { info: info(), players: {}, matches: {} }, archives: {} }; }
+  function normalize(s) {
+    if (!s) return empty();
+    s = copy(s); s.revision = Number(s.revision) || 0;
+    s.current = s.current || empty().current;
+    s.current.info = { ...info(), ...s.current.info };
+    if(s.current.playoff) s.current.playoff.matches=s.current.playoff.matches||{};
+    s.current.players = s.current.players || {}; s.current.matches = s.current.matches || {};
+    s.archives = s.archives || {};
+    return s;
+  }
+  function match(id, round, slot, a, b, bo) {
+    return { id, round, slot, a: a || '', b: b || '', scoreA: 0, scoreB: 0, bestOf: bo, winner: '', status: 'pending', note: '' };
+  }
+  function schedule(players, format, bo) {
+    const ids = list(players).sort((a,b) => a.seed - b.seed).map(p => p.id);
+    if (ids.length < 2 || ids.length > 32) throw Error('参加者は2〜32人で設定してください。');
+    if (![1,3].includes(bo)) throw Error('試合方式が正しくありません。');
+    const matches = {};
+    if (format === 'round-robin') {
+      if (ids.length % 2) ids.push(null);
+      let ring = ids.slice(); let count = 0;
+      for (let round=1; round<ids.length; round++) {
+        for (let i=0; i<ring.length/2; i++) {
+          const a=ring[i], b=ring[ring.length-1-i];
+          if (a && b) { const id='m'+(++count); matches[id]=match(id,round,i,a,b,bo); }
+        }
+        ring = [ring[0],ring[ring.length-1],...ring.slice(1,-1)];
+      }
+    } else if (format === 'knockout') {
+      let size=2; while (size<ids.length) size*=2;
+      const byes=size-ids.length; let cursor=0;
+      for (let slot=0; slot<size/2; slot++) {
+        const id=`r1s${slot}`;
+        matches[id]=match(id,1,slot,ids[cursor++],slot<byes?'':ids[cursor++],bo);
+      }
+      for (let round=2, n=size/4; n>=1; round++,n/=2) {
+        for(let slot=0;slot<n;slot++) {
+          const id=`r${round}s${slot}`; matches[id]=match(id,round,slot,'','',bo);
+        }
+      }
+      advance(matches);
+    } else throw Error('大会形式が正しくありません。');
+    return matches;
+  }
+  function advance(matches) {
+    const all=list(matches).sort((a,b)=>a.round-b.round||a.slot-b.slot);
+    for(const m of all) {
+      if (m.round===1) {
+        if(m.a && !m.b) {m.status='bye';m.winner=m.a;}
+      } else {
+        const previousA=matches[`r${m.round-1}s${m.slot*2}`];
+        const previousB=matches[`r${m.round-1}s${m.slot*2+1}`];
+        const a=previousA.winner||'', b=previousB.winner||'';
+        if(m.a!==a || m.b!==b) {
+          Object.assign(m,{a,b,scoreA:0,scoreB:0,winner:'',status:'pending',note:''});
+        }
+      }
+    }
+    return matches;
+  }
+  function record(current,id,side) {
+    const m=current.matches[id];
+    if(!m || !m.a || !m.b || m.status!=='pending') throw Error('この試合には結果を登録できません。');
+    if(side==='replay') {m.note='引き分け・再試合'; return;}
+    if(!['a','b'].includes(side)) throw Error('結果が正しくありません。');
+    m[side==='a'?'scoreA':'scoreB']++;
+    m.note='';
+    const goal=(m.bestOf+1)/2;
+    if(m.scoreA>=goal || m.scoreB>=goal) {
+      m.winner=m.scoreA>=goal?m.a:m.b; m.status='done';
+    }
+    if(current.info.format==='knockout') advance(current.matches);
+  }
+  function reset(current,id) {
+    const m=current.matches[id];
+    if(!m || m.status==='bye') throw Error('この試合はリセットできません。');
+    Object.assign(m,{scoreA:0,scoreB:0,winner:'',status:'pending',note:''});
+    if(current.info.format==='knockout') advance(current.matches);
+    if(current.info.format==='league-knockout') delete current.playoff;
+  }
+  function standings(current) {
+    const rows=list(current.players).map(p=>({...p,wins:0,losses:0,gamesWon:0,gamesLost:0,played:0,rank:1}));
+    const lookup=Object.fromEntries(rows.map(r=>[r.id,r]));
+    for(const m of list(current.matches)) {
+      if(m.status!=='done' || !lookup[m.a] || !lookup[m.b]) continue;
+      const a=lookup[m.a], b=lookup[m.b]; a.played++;b.played++;
+      a.gamesWon+=m.scoreA;a.gamesLost+=m.scoreB;b.gamesWon+=m.scoreB;b.gamesLost+=m.scoreA;
+      lookup[m.winner].wins++; lookup[m.winner===m.a?m.b:m.a].losses++;
+    }
+    rows.sort((a,b)=>b.wins-a.wins || (b.gamesWon-b.gamesLost)-(a.gamesWon-a.gamesLost) || a.seed-b.seed);
+    rows.forEach((r,i)=>{const p=rows[i-1];r.rank=p && p.wins===r.wins && p.gamesWon-p.gamesLost===r.gamesWon-r.gamesLost?p.rank:i+1;});
+    return rows;
+  }
+  function demo() {
+    const s=empty(); s.current.info.phase='live';s.current.info.edition='TOURNAMENT 02';s.current.info.title='第2回 心理バトル大会';
+    s.current.info.notice='これは操作確認用のサンプル大会です。管理者デモから結果を登録できます。';
+    for(let i=1;i<=8;i++) s.current.players['p'+i]={id:'p'+i,name:'プレイヤー'+String.fromCharCode(64+i),seed:i};
+    s.current.players=assignLeagues(s.current.players,2);
+    s.current.matches=leagueSchedule(s.current.players,1);
+    const ms=list(s.current.matches);for(let i=0;i<8;i++) record(s.current,ms[i].id,i%3===0?'b':'a');
+    return s;
+  }
+  function roster(names) {
+    const values=names.split('\n').map(n=>n.trim()).filter(Boolean);
+    if(values.length<2 || values.length>32) throw Error('参加者は2〜32人で入力してください。');
+    if(values.some(n=>n.length>40)) throw Error('参加者名は40文字以内で入力してください。');
+    if(new Set(values).size!==values.length) throw Error('同じ参加者名が重複しています。');
+    return Object.fromEntries(values.map((name,i)=>['p'+(i+1),{id:'p'+(i+1),name,seed:i+1}]));
+  }
+  function leagues(current) {
+    return [...new Set(list(current.players).map(p=>p.league||'A'))].sort();
+  }
+  function assignLeagues(players,count) {
+    const n=list(players).length;
+    if(!Number.isInteger(count)||count<1||count>8||count>Math.floor(n/2)) throw Error('リーグ数は1〜8で、各リーグに2人以上必要です。');
+    list(players).sort((a,b)=>a.seed-b.seed).forEach((p,i)=>p.league=String.fromCharCode(65+i%count));
+    return players;
+  }
+  function leagueSchedule(players,bo) {
+    const matches={};
+    for(const league of leagues({players})) {
+      const group=Object.fromEntries(list(players).filter(p=>p.league===league).map(p=>[p.id,p]));
+      if(list(group).length<2) throw Error('各リーグには2人以上を割り当ててください。');
+      for(const m of list(schedule(group,'round-robin',bo))) {
+        const id=league+'_'+m.id; matches[id]={...m,id,league};
+      }
+    }
+    return matches;
+  }
+  function leagueView(current,league) {
+    return {info:{...current.info,format:'round-robin'},players:Object.fromEntries(list(current.players).filter(p=>p.league===league).map(p=>[p.id,p])),matches:Object.fromEntries(list(current.matches).filter(m=>m.league===league).map(m=>[m.id,m]))};
+  }
+  function playoffView(current) {
+    const playoff=current.playoff;
+    return {info:{...current.info,format:'knockout',bestOf:playoff?.bestOf||3},players:playoff?.entrants||{},matches:playoff?.matches||{}};
+  }
+  function leagueComplete(current) {
+    const all=list(current.matches);
+    return current.info.format==='league-knockout' && all.length>0 && all.every(m=>m.status==='done');
+  }
+  function createPlayoff(current,ids,bo) {
+    if(!leagueComplete(current)) throw Error('リーグ戦の全試合が終了してから決勝トーナメントを作成してください。');
+    if(!Array.isArray(ids)||ids.length<2||ids.length>8||ids.length>list(current.players).length) throw Error('決勝進出者は2〜8人で選択してください。');
+    if(new Set(ids).size!==ids.length||ids.some(id=>!current.players[id])) throw Error('決勝進出者の重複・未選択があります。');
+    const entrants=Object.fromEntries(ids.map((id,i)=>[id,{...current.players[id],seed:i+1}]));
+    current.playoff={entrants,bestOf:bo,matches:schedule(entrants,'knockout',bo)};
+  }
+  function recordStage(current,id,side,stage='league') {
+    if(stage==='playoff') {
+      if(!current.playoff) throw Error('決勝トーナメントはまだ作成されていません。');
+      record(playoffView(current),id,side);
+    } else record(current,id,side);
+  }
+  function resetStage(current,id,stage='league') {
+    if(stage==='playoff') {
+      if(!current.playoff) throw Error('決勝トーナメントはまだ作成されていません。');
+      reset(playoffView(current),id);
+    } else reset(current,id);
+  }
+  const api={DEFAULT_RULES,leagues,assignLeagues,leagueSchedule,leagueView,playoffView,leagueComplete,createPlayoff,recordStage,resetStage,copy,list,empty,normalize,schedule,advance,record,reset,standings,demo,roster};
+  if(typeof module==='object' && module.exports) module.exports=api;
+  else root.TournamentCore=api;
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>(function () {
+  'use strict';
+  const C=window.TournamentCore, $=id=>document.getElementById(id);
+  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const config=window.MIND_BATTLE_CONFIG||{firebase:null,adminUids:[]};
+  const demoMode=!config.firebase;
+  const KEY='mind-battle-tournament-demo-v1';
+  const CONTENT_KEY='mind-battle-tournament-demo-oct11-update';
+  let state=C.empty(), admin=false, busy=false, ready=false, connected=false, filter='all';
+  let sdk=null, auth=null, db=null, dataRef=null, formRevision=0, rosterRevision=0, toastTimer=null;
+  const RULES_VIEW=new URLSearchParams(window.location?.search||'').get('view')==='rules';
+  document.body.classList.toggle('rules-view',RULES_VIEW);$('rules-back').hidden=!RULES_VIEW;
+  if(RULES_VIEW)for(const a of document.querySelectorAll('a[href^="#"]'))if(!a.classList.contains('skip'))a.setAttribute('href','?view=home'+a.getAttribute('href'));
+  const phaseNames={scheduled:'開催予定',open:'参加受付中',live:'開催中',finished:'終了'};
+  const formatName=i=>(i.format==='league-knockout'?`${i.leagueCount||2}リーグ総当たり → 決勝トーナメント`:i.format==='knockout'?'トーナメント':'総当たり')+' · '+(i.bestOf===3?'2本先取':'1本勝負');
+  function text(id,value){$(id).textContent=value;}
+  function dateLabel(date,time=''){
+    if(!date)return '日時未定';
+    const day=date.slice(0,10),clock=time||date.split('T')[1]||'';
+    const d=new Date(day+'T'+(clock||'00:00')+'+09:00');
+    if(Number.isNaN(d.getTime()))return '日時未定';
+    const label=new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'long',day:'numeric',weekday:'short'}).format(d);
+    return label+(clock?' '+clock+' JST':' ・開始時刻未定');
+  }
+  function rulesHtml(value){return esc(value).replace(/&lt;(\/?)(h2|h3|p|ul|li)\s*&gt;/gi,(_,close,tag)=>'<'+close+tag.toLowerCase()+'>');}
+  function showRules(element,value){element.innerHTML=rulesHtml(value);element.classList.toggle('rich',/<\/?(?:h2|h3|p|ul|li)\s*>/i.test(value));}
+  function activeView(current,stage){
+    if(current.info.format==='league-knockout' && stage==='playoff')return C.playoffView(current);
+    return current;
+  }
+  function updateStage(select,current){
+    select.hidden=current.info.format!=='league-knockout';
+    if(current.info.format!=='league-knockout')select.value='league';
+  }
+  function updateLeagueFilter(current){
+    const select=$('league-filter'),value=select.value;
+    $('league-filter-label').hidden=current.info.format!=='league-knockout'||$('match-stage').value==='playoff';
+    select.innerHTML='<option value="all">すべて</option>'+C.leagues(current).map(l=>`<option value="${esc(l)}">リーグ ${esc(l)}</option>`).join('');
+    select.value=C.leagues(current).includes(value)?value:'all';
+  }
+  function tableHtml(current){return '<div class="table-wrap"><table><thead><tr><th>順位</th><th>プレイヤー</th><th>勝</th><th>敗</th><th>得失点</th></tr></thead><tbody>'+rankingHtml(current)+'</tbody></table></div>';}
+  function groupRankingHtml(current){return C.leagues(current).map(league=>`<div class="group-ranking"><h3>リーグ ${esc(league)}</h3>${tableHtml(C.leagueView(current,league))}</div>`).join('');}
+
+  function safeUrl(s){try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:'';}catch{return'';}}
+  function avatar(p){return `<span class="avatar ${p?.seed%2===0?'blue':''}" aria-hidden="true">${String(p?.seed||0).padStart(2,'0')}</span>`;}
+  function toast(message){const el=$('toast');clearTimeout(toastTimer);const d=[...document.querySelectorAll('dialog[open]')].at(-1);(d||document.body).append(el);el.hidden=false;el.textContent=message;toastTimer=setTimeout(()=>{el.hidden=true;document.body.append(el);},4000);}
+  function connection(message,kind=''){const el=$('connection');el.className='connection-strip '+kind;el.textContent=message;}
+  function confirmAction(title,message){return new Promise(resolve=>{text('confirm-title',title);text('confirm-message',message);const d=$('confirm-dialog');d.showModal();function end(value){d.close();cleanup();resolve(value);}function cancel(e){e.preventDefault();end(false);}function cleanup(){$('confirm-yes').onclick=null;$('confirm-no').onclick=null;d.removeEventListener('cancel',cancel);}$('confirm-yes').onclick=()=>end(true);$('confirm-no').onclick=()=>end(false);d.addEventListener('cancel',cancel);});}
+  function totals(current){const matches=[...C.list(current.matches),...C.list(current.playoff?.matches)].filter(m=>m.status!=='bye');return{total:matches.length,done:matches.filter(m=>m.status==='done').length};}
+  function roundName(current,round){if(current.info.format!=='knockout')return 'ROUND '+String(round).padStart(2,'0');const max=Math.max(0,...C.list(current.matches).map(m=>m.round));return round===max?'決勝':round===max-1?'準決勝':'ROUND '+String(round).padStart(2,'0');}
+  function roundOptions(select,current){const value=select.value;const rounds=[...new Set(C.list(current.matches).map(m=>m.round))].sort((a,b)=>a-b);select.innerHTML='<option value="all">すべて</option>'+rounds.map(r=>`<option value="${r}">${esc(roundName(current,r))}</option>`).join('');select.value=rounds.includes(Number(value))?value:'all';}
+  function matchHtml(m,current,index){const p=current.players,done=m.status==='done',bye=m.status==='bye';const name=id=>id?p[id]?.name||'未設定':'勝者待ち';return `<article class="match-card"><div class="match-top"><span>MATCH ${String(index+1).padStart(2,'0')}</span><span class="${done?'done':''}">${done?'試合終了':bye?'不戦勝':m.a&&m.b?'対戦待ち':'組み合わせ待ち'}</span></div>${['a','b'].map(side=>`<div class="match-player ${m.winner?(m.winner===m[side]?'winner':'loser'):''}">${avatar(p[m[side]])}<span class="player-name">${esc(bye&&side==='b'?'シード':name(m[side]))}</span><strong>${bye?'–':side==='a'?m.scoreA:m.scoreB}</strong></div>`).join('')}${m.note?`<div class="match-note">${esc(m.note)}</div>`:''}</article>`;}
+  function matchListHtml(current,matchFilter,round){if(current.info.format==='league-knockout')return C.leagues(current).filter(l=>$('league-filter').value==='all'||$('league-filter').value===l).map(l=>`<h3 class="league-heading">リーグ ${esc(l)}</h3>${matchListHtml(C.leagueView(current,l),matchFilter,round)}`).join('')||'<div class="empty">リーグを作成してください。</div>';const all=C.list(current.matches).sort((a,b)=>a.round-b.round||a.slot-b.slot);const visible=all.filter(m=>(round==='all'||m.round===Number(round))&&(matchFilter==='all'||(matchFilter==='done'?m.status==='done'||m.status==='bye':m.status==='pending')));if(!visible.length)return '<div class="empty">該当する試合はありません。</div>';const rounds=[...new Set(visible.map(m=>m.round))];return rounds.map(r=>`<div class="round-heading">${esc(roundName(current,r))}</div><div class="match-grid">${visible.filter(m=>m.round===r).map(m=>matchHtml(m,current,all.findIndex(x=>x.id===m.id))).join('')}</div>`).join('');}
+  function rankingHtml(current){const rows=C.standings(current), knockout=current.info.format==='knockout';if(!rows.length)return '<tr><td colspan="5">参加者はまだ登録されていません。</td></tr>';return rows.map(r=>`<tr class="${!knockout&&r.rank===1?'rank-top':''}"><td>${knockout?'–':String(r.rank).padStart(2,'0')}</td><td><div class="table-player">${avatar(r)}<span>${esc(r.name)}</span></div></td><td>${r.wins}</td><td>${r.losses}</td><td>${r.gamesWon-r.gamesLost>0?'+':''}${r.gamesWon-r.gamesLost}</td></tr>`).join('');}
+  function champion(current){if(current.info.format==='league-knockout')return current.playoff?champion(C.playoffView(current)):'';const {done,total}=totals(current);if(!total||done!==total)return '';if(current.info.format==='knockout'){const m=C.list(current.matches).sort((a,b)=>b.round-a.round)[0];return current.players[m.winner]?.name||'';}const rows=C.standings(current).filter(r=>r.rank===1);return rows.map(r=>r.name).join(' / ');}
+  function render(){const c=state.current,i=c.info,{done,total}=totals(c),percent=total?Math.round(done/total*100):0;
+    text('title',i.title);text('edition',i.edition);text('phase',phaseNames[i.phase]||'開催予定');text('description',i.description);text('notice',i.notice||'新しいお知らせはありません。');text('event-date',dateLabel(i.date,i.time));text('venue',i.venue);text('format',i.format==='league-knockout'?`${i.leagueCount||2}リーグ総当たり → 決勝`:formatName(i));text('prize',i.prize);text('match-format',formatName(i));showRules($('rules-text'),i.rules);document.title=(RULES_VIEW?'大会ルール | ':'')+i.title+' | 心理バトル';
+    $('player-count').innerHTML=C.list(c.players).length+'<small>人</small>';$('completed-count').innerHTML=done+`<small>/ ${total}</small>`;$('progress-label').innerHTML=percent+'<small>%</small>';$('progress-fill').style.width=percent+'%';
+    const url=safeUrl(i.gameUrl);$('game-link').hidden=!url;if(url)$('game-link').href=url;
+    updateStage($('match-stage'),c);updateStage($('admin-stage'),c);updateLeagueFilter(c);
+    let view=activeView(c,$('match-stage').value);
+    if(c.info.format==='league-knockout'&&$('match-stage').value==='league'&&$('league-filter').value!=='all')view=C.leagueView(c,$('league-filter').value);
+    text('match-format',i.format==='league-knockout'&&$('match-stage').value==='playoff'&&!c.playoff?'未作成':formatName(view.info));
+    roundOptions($('round-filter'),view);$('matches-content').innerHTML=matchListHtml(view,filter,$('round-filter').value);
+    text('stage-note',c.info.format==='league-knockout'?(!c.playoff&&$('match-stage').value==='playoff'?'決勝トーナメントは未作成です。全リーグ戦終了後に管理者が作成します。':c.playoff?'決勝トーナメント：'+C.list(c.playoff.entrants).length+'人・'+(c.playoff.bestOf===3?'2本先取':'1本勝負'):C.leagueComplete(c)?'リーグ戦終了。管理者が決勝進出者を確定してから決勝トーナメントを作成します。':'各リーグ内で総当たりを行い、全試合終了後に決勝トーナメントへ進みます。'):'');
+    $('group-standings').hidden=i.format!=='league-knockout';$('ranking-table').hidden=i.format==='league-knockout';
+    $('group-standings').innerHTML=i.format==='league-knockout'?groupRankingHtml(c):'';
+    $('ranking-body').innerHTML=rankingHtml(c);text('roster-count',C.list(c.players).length+' PLAYERS');
+    text('standings-tag',i.phase==='finished'?'最終':'暫定');
+    text('ranking-note',i.format==='league-knockout'?'リーグごとの順位。試合勝数 → ゲーム得失点の順。同値は同順位。決勝進出者は管理者が確定します。':i.format==='knockout'?'トーナメントの勝敗成績です。順位は対戦表の進行結果で決まります。': '試合勝数 → 得失点（ゲーム勝数 − 敗数）の順。同値は同順位。');
+    $('player-list').innerHTML=C.list(c.players).sort((a,b)=>a.seed-b.seed).map(p=>`<div class="player-pill">${avatar(p)}<span class="player-name">${esc(p.name)}</span><span class="seed">${i.format==='league-knockout'?'リーグ '+esc(p.league)+' · ':''}#${String(p.seed).padStart(2,'0')}</span></div>`).join('')||'<div class="empty">参加者未登録</div>';
+    const archives=Object.entries(state.archives).sort((a,b)=>b[1].savedAt-a[1].savedAt);
+    $('history-list').innerHTML=archives.map(([id,a])=>`<button class="archive-card" data-archive="${esc(id)}"><span><small>${esc(dateLabel(a.info.date,a.info.time))} · ${esc(formatName(a.info))}</small><strong>${esc(a.info.title)}</strong><small>${champion(a)?(a.info.format!=='round-robin'?'優勝：':'成績1位：')+esc(champion(a)):'大会概要と試合結果を見る'}</small></span><span class="arrow" aria-hidden="true">↗</span></button>`).join('')||'<div class="empty">過去大会はまだ登録されていません。</div>';
+    if(admin){renderResults();refreshLeagueStats();}
+  }
+  function renderResults(){const c=activeView(state.current,$('admin-stage').value);roundOptions($('admin-round'),c);const round=$('admin-round').value;const matches=C.list(c.matches).sort((a,b)=>a.round-b.round||a.slot-b.slot).filter(m=>round==='all'||m.round===Number(round));
+    $('result-list').innerHTML=matches.map(m=>{const name=id=>c.players[id]?.name||'勝者待ち';const playable=m.a&&m.b&&m.status==='pending';return `<div class="admin-match"><div class="subtle">${m.league?'リーグ '+esc(m.league)+' / ':''}${esc(roundName(c,m.round))} / ${esc(m.id)} · ${m.status==='done'?'試合終了':m.status==='bye'?'不戦勝':'未終了'}</div><div class="admin-match-heading"><span>${esc(name(m.a))} <span class="subtle">vs</span> ${esc(m.status==='bye'?'シード':name(m.b))}</span><span class="score">${m.scoreA} : ${m.scoreB}</span></div><div class="result-actions">${playable?`<button class="btn small a" data-result="a" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>${esc(name(m.a))} の勝利</button><button class="btn small b" data-result="b" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>${esc(name(m.b))} の勝利</button><button class="btn small ghost" data-result="replay" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>引き分け・再試合</button>`:''}${m.status!=='bye'&&(m.scoreA||m.scoreB||m.note)?`<button class="btn small ghost" data-result="reset" data-id="${esc(m.id)}" data-stage="${$('admin-stage').value}" ${busy?'disabled':''}>結果リセット</button>`:''}</div>${m.note?`<div class="subtle">${esc(m.note)}</div>`:''}</div>`;}).join('')||`<div class="empty">${state.current.info.format==='league-knockout'&&$('admin-stage').value==='playoff'?'決勝は「リーグ・決勝」で全リーグ戦終了後に作成してください。':'「参加者・対戦表」から対戦表を作成してください。'}</div>`;
+  }
+  function populateForms(){const i=state.current.info,form=$('info-form');for(const el of form.elements)if(el.name)el.value=el.name==='date'?i.date.slice(0,10):el.name==='time'?(i.time||i.date.split('T')[1]||''):i[el.name]??'';
+    const r=$('roster-form');r.elements.names.value=C.list(state.current.players).sort((a,b)=>a.seed-b.seed).map(p=>p.name).join('\n');r.elements.format.value=i.format;r.elements.bestOf.value=i.bestOf;r.elements.leagueCount.value=i.leagueCount||2;rebuildLeagueControls();formRevision=state.revision;rosterRevision=state.revision;
+  }
+  function refreshLeagueStats(){
+    const c=state.current,combined=c.info.format==='league-knockout';
+    $('playoff-unavailable').hidden=combined;$('playoff-settings').hidden=!combined;
+    if(!combined)return;
+    $('qualification-standings').innerHTML=groupRankingHtml(c);
+    const total=C.list(c.matches).length,done=C.list(c.matches).filter(m=>m.status==='done').length;
+    text('playoff-readiness',`リーグ戦 ${done} / ${total} 試合終了。`+(C.leagueComplete(c)?'決勝トーナメントを作成できます。':'全試合終了後に作成できます。')+(c.playoff?' 作り直すと現在の決勝結果をリセットします。':''));
+  }
+  function rebuildLeagueControls(){
+    const c=state.current;if(c.info.format!=='league-knockout'){refreshLeagueStats();return;}
+    $('league-assignment').innerHTML=C.list(c.players).sort((a,b)=>a.seed-b.seed).map(p=>`<label class="league-assignment-row"><span>${esc(p.name)}</span><select data-league-player="${esc(p.id)}">${C.leagues(c).map(l=>`<option value="${esc(l)}" ${l===p.league?'selected':''}>リーグ ${esc(l)}</option>`).join('')}</select></label>`).join('');
+    const maximum=Math.min(8,C.list(c.players).length),saved=C.list(c.playoff?.entrants).sort((a,b)=>a.seed-b.seed).map(p=>p.id);
+    const count=Math.min(maximum,Math.max(2,saved.length||4));
+    $('playoff-count').value=String(count);$('playoff-bestof').value=String(c.playoff?.bestOf||3);
+    $('playoff-count').innerHTML=Array.from({length:Math.max(0,maximum-1)},(_,i)=>`<option value="${i+2}">${i+2}人</option>`).join('');$('playoff-count').value=String(count);
+    renderEntrantControls(saved);refreshLeagueStats();
+  }
+  function renderEntrantControls(selected){
+    const c=state.current,count=Number($('playoff-count').value);
+    selected=selected||Array.from(document.querySelectorAll('[data-entrant]')).map(el=>el.value);
+    const ranks={};for(const league of C.leagues(c))for(const row of C.standings(C.leagueView(c,league)))ranks[row.id]=row;
+    $('playoff-entrants').innerHTML=Array.from({length:count},(_,i)=>`<label class="entrant-row"><span>枠 ${i+1}</span><select data-entrant="${i}" required><option value="">選択してください</option>${C.list(c.players).sort((a,b)=>a.seed-b.seed).map(p=>`<option value="${esc(p.id)}" ${selected[i]===p.id?'selected':''}>${esc(p.name)} · ${esc(p.league)}リーグ ${ranks[p.id]?.rank||1}位 (${ranks[p.id]?.wins||0}勝)</option>`).join('')}</select></label>`).join('');
+  }
+  function openAdmin(){if(!ready){toast('接続準備が完了していません。');return;}if(admin){populateForms();renderResults();$('admin-dialog').showModal();return;}
+    $('login-form').hidden=demoMode;$('demo-enter').hidden=!demoMode;text('login-error','');text('login-description',demoMode?'デモではログイン不要です。変更はこのブラウザ内だけに保存され、他の端末には公開されません。':'大会の管理者アカウントでログインしてください。');$('login-dialog').showModal();
+  }
+  function setAdmin(value,identity=''){admin=value;text('admin-label',value?'大会を管理':'管理者ログイン');text('admin-identity',demoMode?'管理者デモ':identity);text('admin-mode-note',demoMode?'デモモード：変更はこのブラウザ内に保存します。':'保存した内容は一般ページにもリアルタイムで反映されます。');$('demo-reset-box').hidden=!demoMode;if(!value)$('admin-dialog').close();}
+  function errorMessage(error){const code=String(error?.code||'');if(/permission.denied|permission-denied|PERMISSION_DENIED/.test(code))return'書き込みが拒否されました。管理者UIDとデータベースのルールを確認してください。';if(code.startsWith('auth/'))return'ログインできませんでした。メールアドレス・パスワード・認証設定を確認してください。';return error?.message||'処理に失敗しました。接続を確認してください。';}
+  async function save(mutate,message,expected=state.revision){if(busy)return false;try{if(!admin)throw Error('管理者ログインが必要です。');if(!ready)throw Error('読み込みが完了していません。');if(!demoMode&&!connected)throw Error('接続が切れています。再接続後に保存してください。');busy=true;text('admin-error','');document.querySelectorAll('.admin-panel button').forEach(b=>b.disabled=true);
+      if(demoMode){let latest;try{const raw=localStorage.getItem(KEY);latest=raw?C.normalize(JSON.parse(raw)):state;}catch{throw Error('ブラウザ内のデータを読み込めません。');}if(latest.revision!==expected)throw Error('別の操作でデータが更新されました。管理画面を閉じて開き直してください。');const next=C.copy(latest);mutate(next);next.revision++;localStorage.setItem(KEY,JSON.stringify(next));state=next;
+      }else{const result=await sdk.runTransaction(dataRef,data=>{const latest=C.normalize(data);if(latest.revision!==expected)return;mutate(latest);latest.revision++;return latest;},{applyLocally:false});if(!result.committed)throw Error('別の管理操作でデータが更新されました。管理画面を閉じて開き直してください。');state=C.normalize(result.snapshot.val());}
+      render();formRevision=state.revision;rosterRevision=state.revision;toast(message);return true;
+    }catch(e){text('admin-error',errorMessage(e));return false;}finally{busy=false;document.querySelectorAll('.admin-panel button').forEach(b=>b.disabled=false);if(admin)renderResults();}
+  }
+  $('admin-open').onclick=openAdmin;
+  document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).close());
+  $('demo-enter').onclick=()=>{$('login-dialog').close();setAdmin(true);openAdmin();};
+  $('logout').onclick=async()=>{if(busy){toast('保存処理の完了をお待ちください。');return;}if(demoMode)setAdmin(false);else try{await sdk.signOut(auth);}catch(e){text('admin-error',errorMessage(e));}};
+  $('login-form').onsubmit=async e=>{e.preventDefault();if(!sdk)return;const f=e.currentTarget;$('login-submit').disabled=true;text('login-error','');try{const credential=await sdk.signInWithEmailAndPassword(auth,f.elements.email.value.trim(),f.elements.password.value);f.elements.password.value='';if(!(config.adminUids||[]).includes(credential.user.uid)){await sdk.signOut(auth);throw Error('このアカウントには大会の管理権限がありません。');}$('login-dialog').close();setAdmin(true,credential.user.email);openAdmin();}catch(e){f.elements.password.value='';text('login-error',errorMessage(e));}finally{$('login-submit').disabled=false;}};
+  document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b));});render();});
+  $('round-filter').onchange=render;$('league-filter').onchange=()=>{$('round-filter').value='all';render();};$('match-stage').onchange=()=>{$('round-filter').value='all';render();};$('admin-round').onchange=renderResults;$('admin-stage').onchange=()=>{$('admin-round').value='all';renderResults();};$('playoff-count').onchange=()=>renderEntrantControls();
+  document.querySelectorAll('[data-admin-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-admin-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.admin-panel').forEach(p=>p.hidden=p.id!=='admin-'+b.dataset.adminTab);});
+  $('result-list').onclick=async e=>{const b=e.target.closest('[data-result]');if(!b||busy)return;const id=b.dataset.id,side=b.dataset.result,stage=b.dataset.stage||'league',expected=state.revision;
+    if(side==='reset'&&!await confirmAction('試合結果をリセット',stage==='league'&&state.current.info.format==='league-knockout'&&state.current.playoff?'リーグ戦の結果をリセットすると、現在の決勝トーナメントとその試合結果を削除します。続けますか？':(stage==='playoff'||state.current.info.format==='knockout')?'この試合と、勝者の変更で組み合わせが変わる次の試合以降の結果がリセットされます。続けますか？':'この試合のスコアを0対0に戻します。続けますか？'))return;
+    await save(s=>side==='reset'?C.resetStage(s.current,id,stage):C.recordStage(s.current,id,side,stage),side==='reset'?'試合結果をリセットしました。':side==='replay'?'引き分け・再試合として登録しました。':'勝利を登録しました。',expected);
+  };
+  $('info-form').onsubmit=async e=>{e.preventDefault();const values=Object.fromEntries(new FormData(e.currentTarget));if(values.gameUrl&&!safeUrl(values.gameUrl)){text('admin-error','ゲームURLはhttpまたはhttpsで入力してください。');return;}await save(s=>{s.current.info={...s.current.info,...values};},'大会情報を保存しました。',formRevision);};
+  $('roster-form').onsubmit=async e=>{
+    e.preventDefault();if(busy)return;
+    try{
+      const f=e.currentTarget,players=C.roster(f.elements.names.value),format=f.elements.format.value,bo=Number(f.elements.bestOf.value),leagueCount=Number(f.elements.leagueCount.value),expected=rosterRevision;
+      if(format==='league-knockout')C.assignLeagues(players,leagueCount);
+      const matches=format==='league-knockout'?C.leagueSchedule(players,bo):C.schedule(players,format,bo);
+      if(C.list(state.current.matches).length&&!await confirmAction('対戦表を作り直す','現在の対戦表とリーグ・決勝の試合結果を置き換えます。続けますか？'))return;
+      if(await save(s=>{s.current.players=players;s.current.matches=matches;delete s.current.playoff;s.current.info.format=format;s.current.info.bestOf=bo;s.current.info.leagueCount=format==='league-knockout'?leagueCount:1;},'参加者と対戦表を保存しました。',expected))rebuildLeagueControls();
+    }catch(e){text('admin-error',errorMessage(e));}
+  };
+  $('league-save').onclick=async()=>{
+    if(busy)return;const expected=state.revision;
+    try{
+      if(state.current.info.format!=='league-knockout'||C.list(state.current.players).length<2)throw Error('先にリーグ戦の参加者と対戦表を作成してください。');
+      const players=C.copy(state.current.players);
+      for(const el of document.querySelectorAll('[data-league-player]'))players[el.dataset.leaguePlayer].league=el.value;
+      const groups=C.leagues(state.current);
+      if(groups.some(l=>C.list(players).filter(p=>p.league===l).length<2))throw Error('各リーグには2人以上を割り当ててください。');
+      const matches=C.leagueSchedule(players,state.current.info.bestOf);
+      if(!await confirmAction('リーグ所属を変更','リーグ戦と決勝トーナメントの試合結果をリセットし、対戦表を作り直します。続けますか？'))return;
+      if(await save(s=>{s.current.players=players;s.current.matches=matches;delete s.current.playoff;},'リーグ所属を保存しました。',expected))rebuildLeagueControls();
+    }catch(e){text('admin-error',errorMessage(e));}
+  };
+  $('playoff-form').onsubmit=async e=>{
+    e.preventDefault();if(busy)return;const expected=state.revision;
+    try{
+      const ids=Array.from(document.querySelectorAll('[data-entrant]')).map(el=>el.value),bo=Number($('playoff-bestof').value);
+      const preview=C.copy(state.current);C.createPlayoff(preview,ids,bo);
+      if(state.current.playoff&&!await confirmAction('決勝トーナメントを作り直す','現在の決勝対戦表と決勝の試合結果を置き換えます。リーグ戦の結果は残ります。続けますか？'))return;
+      if(await save(s=>C.createPlayoff(s.current,ids,bo),'決勝トーナメントを作成しました。',expected)){
+        $('match-stage').value='playoff';$('admin-stage').value='playoff';$('round-filter').value='all';$('admin-round').value='all';rebuildLeagueControls();render();
+      }
+    }catch(e){text('admin-error',errorMessage(e));}
+  };
+  $('archive-save').onclick=async()=>{if(busy)return;const expected=state.revision,{done,total}=totals(state.current);if(!total){text('admin-error','対戦表を作成してから大会を保存してください。');return;}if(!await confirmAction('過去大会として保存',done===total?'現在の大会を過去大会へ保存します。':'未終了の試合があります。途中経過として過去大会へ保存しますか？'))return;const id='a'+Date.now()+'_'+Math.random().toString(36).slice(2,8),savedAt=Date.now();await save(s=>{s.archives[id]={...C.copy(s.current),savedAt};},'過去大会へ保存しました。',expected);};
+  $('backup-download').onclick=()=>{if(!admin)return;const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='mind-battle-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('バックアップをダウンロードしました。');};
+  $('demo-reset').onclick=async()=>{if(busy||!demoMode)return;const expected=state.revision;if(!await confirmAction('デモをリセット','このブラウザ内のデモ大会・過去大会を初期状態に戻します。続けますか？'))return;await save(s=>{const fresh=C.demo();s.current=fresh.current;s.archives={};},'デモをリセットしました。',expected);populateForms();};
+  $('history-list').onclick=e=>{const b=e.target.closest('[data-archive]');if(!b)return;const c=state.archives[b.dataset.archive];if(!c)return;text('archive-title',c.info.title);$('archive-content').innerHTML=`<p class="subtle">${esc(dateLabel(c.info.date,c.info.time))} · ${esc(formatName(c.info))}</p><p class="description">${esc(c.info.description)}</p><p class="subtle">開催場所：${esc(c.info.venue)} / 優勝賞品・賞金：${esc(c.info.prize)}</p><h3>大会ルール</h3><div class="rules-text rich">${rulesHtml(c.info.rules)}</div><h3 style="margin-top:24px">順位・成績</h3>${c.info.format==='league-knockout'?groupRankingHtml(c):tableHtml(c)}<h3 style="margin-top:24px">対戦表・試合結果</h3>${c.info.format==='league-knockout'?C.leagues(c).map(l=>'<h3 class="league-heading">リーグ '+esc(l)+'</h3>'+matchListHtml(C.leagueView(c,l),'all','all')).join(''):matchListHtml(c,'all','all')}${c.playoff?'<h3 class="league-heading">決勝トーナメント</h3>'+matchListHtml(C.playoffView(c),'all','all'):''}`;$('archive-dialog').showModal();};
+  window.addEventListener('storage',e=>{if(!demoMode||e.key!==KEY)return;try{state=e.newValue?C.normalize(JSON.parse(e.newValue)):C.demo();render();}catch{connection('デモデータの読み込みに失敗しました。','error-state');}});
+  async function boot(){if(demoMode){try{const raw=localStorage.getItem(KEY);state=raw?C.normalize(JSON.parse(raw)):C.demo();if(raw&&localStorage.getItem(CONTENT_KEY)!=='applied'){const defaults=C.empty().current.info;state.current.info.date=defaults.date;state.current.info.time='';state.current.info.prize=defaults.prize;state.current.info.rules=defaults.rules;}localStorage.setItem(CONTENT_KEY,'applied');localStorage.setItem(KEY,JSON.stringify(state));ready=true;connection('DEMO / サンプル大会です。編集内容はこのブラウザ内だけに保存されます。');}catch{state=C.demo();ready=true;connection('DEMO / ブラウザ内保存が利用できません。編集は保存に失敗する場合があります。','error-state');}render();return;}
+    try{const required=['apiKey','authDomain','databaseURL','projectId'];if(required.some(k=>!config.firebase[k]))throw Error('firebase-config.js の接続情報が不足しています。');
+      const base='https://www.gstatic.com/firebasejs/13.0.0/';const [appMod,authMod,dbMod]=await Promise.all([import(base+'firebase-app.js'),import(base+'firebase-auth.js'),import(base+'firebase-database.js')]);sdk={...authMod,...dbMod};const app=appMod.initializeApp(config.firebase);auth=sdk.getAuth(app);db=sdk.getDatabase(app);dataRef=sdk.ref(db,'mindBattleTournament');
+      sdk.onValue(sdk.ref(db,'.info/connected'),snapshot=>{connected=snapshot.val()===true;connection(connected?'ONLINE / 大会情報を同期しています。':'OFFLINE / 接続待ちです。表示は最新でない場合があります。',connected?'live':'error-state');});
+      sdk.onValue(dataRef,snapshot=>{state=C.normalize(snapshot.val());ready=true;render();},error=>{ready=false;connection('大会情報を読み込めませんでした。Firebaseの設定・読み取りルールを確認してください。','error-state');text('admin-error',errorMessage(error));});
+      sdk.onAuthStateChanged(auth,user=>setAdmin(!!user&&(config.adminUids||[]).includes(user.uid),user?.email||''));
+    }catch(e){ready=false;render();connection('接続エラー / '+errorMessage(e),'error-state');}
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
